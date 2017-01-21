@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "./built",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "target": "es2015",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitUseStrict": false,
+    "sourceMap": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "traceResolution": false,
+    "listFiles": false,
+    "stripInternal": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "pretty": false,
+    "noEmitOnError": true
+  },
+  "exclude": ["node_modules", "bundle", "dist", "src_aot"]
+}
