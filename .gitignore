@@ -4,8 +4,7 @@
 /dist
 /built
 /tmp
-/src_aot/*
-!main_aot.ts
+bundle.js
 
 # dependencies
 /node_modules
