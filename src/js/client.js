@@ -1,17 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
 
-import AppComponent from './components/app';
-import reducer from './reducers';
+import { routes, configureStore, withReduxProvider } from './universal';
 
-const preloadedState = window.__PRELOADED_STATE__ || {};
-const store = createStore(reducer, preloadedState);
+const initialState = window.__PRELOADED_STATE__ || {};
+const store = configureStore(initialState);
+const clientApp = withReduxProvider(store, <Router history={browserHistory}>{routes}</Router>);
 
 render(
-  <Provider store={store}>
-    <AppComponent />
-  </Provider>,
+  clientApp,
   document.getElementById('root'),
 );

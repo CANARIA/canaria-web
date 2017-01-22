@@ -4,27 +4,50 @@ import compression from 'compression';
 
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { RouterContext, match } from 'react-router';
 
 import config from '../../config';
+import { routes, configureStore, withReduxProvider } from './universal';
 import htmlTemplate from './index.html';
-import reducer from './reducers';
-import AppComponent from './components/app';
 
 const app = new Express();
 const port = config.port;
 
 function handleRender(req, res) {
-  const store = createStore(reducer);
-  const html = renderToString(
-    <Provider store={store}>
-      <AppComponent />
-    </Provider>,
-  );
-  const preloadedState = store.getState();
+  match({ routes, location: req.url }, (err, redirect, renderProps) => {
+    if (err) {
+      return res.status(500).send(err.message);
+    }
 
-  res.send(htmlTemplate(html, preloadedState));
+    if (redirect) {
+      return res.redirect(302, redirect.pathname + redirect.search);
+    }
+
+    if (!renderProps) {
+      return res.status(404).send('Not found');
+    }
+
+    const store = configureStore();
+    const fetchingParams = {
+      params: renderProps.params,
+      dispatch: store.dispatch,
+    };
+    const promises = renderProps.components.map((component) => {
+      if (component.fetchData) {
+        return component.fetchData(fetchingParams);
+      }
+      return Promise.resolve('no fetching');
+    });
+
+    return Promise.all(promises)
+    .then(() => {
+      const serverApp = withReduxProvider(store, <RouterContext {...renderProps} />);
+      const html = renderToString(serverApp);
+      const initialState = store.getState();
+
+      res.send(htmlTemplate(html, initialState));
+    });
+  });
 }
 
 app.use(compression());

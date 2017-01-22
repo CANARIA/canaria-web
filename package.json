@@ -15,7 +15,8 @@
     "watch:css": "postcss -c ./tasks/postcss/config.json -m -w",
     "watch": "npm-run-all -p watch:*",
     "dev:server": "gulp dev-server",
-    "dev": "npm-run-all -p watch dev:server"
+    "dev": "npm-run-all -p watch dev:server",
+    "lint": "eslint ./src"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "react-dom": "^15.4.2",
     "react-helmet": "^4.0.0",
     "react-redux": "^5.0.2",
+    "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "webpack": "^2.2.0",
     "webpack-merge": "^2.4.0"

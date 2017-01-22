@@ -3,7 +3,6 @@ export default (html, preloadedState) => `
   <html lang="ja">
   <head>
     <meta charset="utf-8">
-    <meta name="author" content="{{ .Site.Params.author }}">
     <meta name="description" content="デスクリプションが入ります">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

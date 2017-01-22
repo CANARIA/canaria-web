@@ -2,9 +2,9 @@ import React from 'react';
 
 import Head from './head';
 
-export default () => (
+export default ({ children }) => (
   <div>
     <Head />
-    <h1>Hello, world!</h1>
+    {children}
   </div>
 );
