@@ -5,9 +5,9 @@ let initialized = false;
 function server(reload) {
   return (callback) => {
     const stream = nodemon({
-      script: 'src/server.js',
+      script: 'src/js/server.js',
       exec: 'babel-node',
-      watch: ['dist/*', 'src/server.js'],
+      watch: ['dist/*', 'src/js/server.js'],
       ext: 'css js',
     });
 

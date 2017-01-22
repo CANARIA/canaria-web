@@ -6,7 +6,7 @@ const path = require('path');
  */
 module.exports = {
   entry: {
-    bundle: path.resolve(__dirname, '../../src/client.js'),
+    bundle: path.resolve(__dirname, '../../src/js/client.js'),
   },
   output: {
     path: path.join(__dirname, '../../dist'),

@@ -27,7 +27,7 @@ export default (html, preloadedState) => `
     <link rel="icon" type="image/vnd.microsoft.icon" href="icoファビコンが入ります">
     <link rel="icon" type="image/png" sizes="48x48" href="pngファビコンが入ります">
     <link rel="apple-touch-icon" sizes="180x180" href="pngアイコンがはいります">
-    <link rel="stylesheet" href="/css/bundle.css">
+    <link rel="stylesheet" href="/bundle.css">
     <title>タイトルが入ります</title>
   </head>
   <body>

@@ -7,7 +7,7 @@ import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import config from '../config';
+import config from '../../config';
 import htmlTemplate from './index.html';
 import reducer from './reducers';
 import AppComponent from './components/app';
@@ -28,6 +28,6 @@ function handleRender(req, res) {
 }
 
 app.use(compression());
-app.use(Express.static(path.join(__dirname, '..', 'dist')));
+app.use(Express.static(path.join(__dirname, '../../dist')));
 app.use(handleRender);
 app.listen(port);
