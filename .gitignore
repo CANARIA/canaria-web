@@ -6,6 +6,9 @@
 /tmp
 bundle.js
 
+# config files
+/config.js
+
 # dependencies
 /node_modules
 

@@ -1,0 +1,26 @@
+const nodemon = require('gulp-nodemon');
+
+let initialized = false;
+
+function server(reload) {
+  return (callback) => {
+    const stream = nodemon({
+      script: 'src/server.js',
+      exec: 'babel-node',
+      watch: ['dist/*', 'src/server.js'],
+      ext: 'css js',
+    });
+
+    return stream
+      .on('start', () => {
+        if (!initialized) {
+          initialized = true;
+          callback();
+        }
+      })
+      // ここで時間をあけないと上手くreloadされない
+      .on('restart', () => setTimeout(reload, 700));
+  };
+}
+
+module.exports = server;

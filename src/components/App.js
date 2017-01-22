@@ -1,3 +1,10 @@
 import React from 'react';
 
-export default () => <h1>Hello, world!</h1>;
+import Head from './head';
+
+export default () => (
+  <div>
+    <Head />
+    <h1>Hello, world!</h1>
+  </div>
+);

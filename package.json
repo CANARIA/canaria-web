@@ -7,15 +7,22 @@
     "start": "babel-node ./src/server.js",
     "build:js": "webpack",
     "release:js": "webpack --env release",
-    "watch:js": "webpack -w"
+    "watch:js": "webpack -w",
+    "watch": "npm-run-all -p watch:*",
+    "dev:server": "gulp dev-server",
+    "dev": "npm-run-all -p watch dev:server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "browser-sync": "^2.18.6",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-helmet": "^4.0.0",
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "webpack": "^2.2.0",
@@ -32,6 +39,8 @@
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
-    "eslint-plugin-react": "^6.9.0"
+    "eslint-plugin-react": "^6.9.0",
+    "npm-run-all": "^4.0.1",
+    "require-dir": "^0.3.1"
   }
 }

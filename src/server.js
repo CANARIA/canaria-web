@@ -10,7 +10,7 @@ import { Provider } from 'react-redux';
 import config from '../config';
 import htmlTemplate from './index.html';
 import reducer from './reducers';
-import App from './components/App';
+import AppComponent from './components/app';
 
 const app = new Express();
 const port = config.port;
@@ -19,7 +19,7 @@ function handleRender(req, res) {
   const store = createStore(reducer);
   const html = renderToString(
     <Provider store={store}>
-      <App />
+      <AppComponent />
     </Provider>,
   );
   const preloadedState = store.getState();
