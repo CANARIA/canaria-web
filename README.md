@@ -1,6 +1,6 @@
 # canaria-web
 
-CANARIAのwebアプリケーションです。  
+CANARIAのwebアプリケーションです。
 このプロジェクトはNodeとYarnに依存しているので、先にインストールしてください。
 
 * Node v7.4.0
@@ -16,5 +16,13 @@ $ git clone git@github.com:CANARIA/canaria-web.git
 $ cd canaria-web
 $ touch config.js # 別途中身記述
 $ yarn install
+
+# ビルド
+$ docker build -t canaria-web:latest .
+
+# コンテナの起動
+$ docker run -d -it -v $(pwd):/node -p 3000:3000 canaria-web:latest /bin/sh
+
+# Nodeサーバ起動
 $ yarn start
 ```
