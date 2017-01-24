@@ -19,7 +19,6 @@ const prdConfig = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.DedupePlugin(), // 被ってるモジュールがいたらひとつにまとめる。
     new webpack.optimize.UglifyJsPlugin({ // compile時にuglifyでminimizeする
       compress: { warnings: false },
       output: { comments: false },

@@ -4,7 +4,8 @@
   "private": true,
   "description": "canariaのwebアプリケーションです。",
   "scripts": {
-    "start": "babel-node ./src/server.js",
+    "prestart": "npm run release",
+    "start": "babel-node ./src/js/server.js",
     "build:css": "postcss -c ./tasks/postcss/config.json",
     "build:js": "webpack",
     "build": "npm-run-all build:*",
