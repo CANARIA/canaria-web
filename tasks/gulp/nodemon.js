@@ -9,6 +9,10 @@ function server(reload) {
       exec: 'babel-node',
       watch: ['dist/*', 'src/js/server.js'],
       ext: 'css js',
+      env: {
+        NODE_ENV: 'development',
+        PORT: 3000,
+      },
     });
 
     return stream

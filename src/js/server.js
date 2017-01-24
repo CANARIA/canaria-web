@@ -6,12 +6,11 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 
-import config from '../../config';
 import { routes, configureStore, withReduxProvider } from './universal';
 import htmlTemplate from './index.html';
 
+const PORT = process.env.PORT || 3000;
 const app = new Express();
-const port = config.port;
 
 function handleRender(req, res) {
   match({ routes, location: req.url }, (err, redirect, renderProps) => {
@@ -53,4 +52,4 @@ function handleRender(req, res) {
 app.use(compression());
 app.use(Express.static(path.join(__dirname, '../../dist')));
 app.use(handleRender);
-app.listen(port);
+app.listen(PORT);
