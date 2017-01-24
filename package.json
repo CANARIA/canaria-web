@@ -17,7 +17,8 @@
     "watch": "npm-run-all -p watch:*",
     "dev:server": "gulp dev-server",
     "dev": "npm-run-all -p watch dev:server",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "test": ""
   },
   "author": "",
   "license": "ISC",
