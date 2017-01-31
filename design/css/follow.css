@@ -1,0 +1,13 @@
+.follow {
+  margin: -10px;
+  font-size: 0;
+}
+.follow > li {
+  display: inline-block;
+  width: 33.333%;
+  padding: 10px;
+}
+.follow__item {
+  height: 300px;
+  background-color: red;
+}

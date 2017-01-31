@@ -1,0 +1,41 @@
+.tag { margin-bottom: 20px; }
+.tag__head {
+  display: flex;
+  justify-content: space-between;
+}
+.tag__title { font-size: 1.6rem; }
+.tag__title .accent { font-weight: bold; }
+.tag__more {
+  position: relative;
+  font-size: 1.4rem;
+  padding-right: 20px;
+  color: #258fb8;
+}
+.tag__more::before {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #258fb8;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  content: "";
+}
+.tag__more::after {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #F8F7F6;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  content: "";
+}
+.tag__bottom {
+  padding: 20px;
+  background-color: #fff;
+}

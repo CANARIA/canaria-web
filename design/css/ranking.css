@@ -1,0 +1,89 @@
+.rankingtype {
+  display: inline-block;
+  border: 1px solid #e8e8e8;
+  padding: 6px 10px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+.rankingtype__item {
+  position: relative;
+  font-size: 1.4rem;
+  padding-right: 20px;
+  color: #222;
+  cursor: pointer;
+}
+.rankingtype__item::before {
+  position: absolute;
+  top: 4px;
+  right: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #222;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  content: "";
+}
+.rankingtype__item::after {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 7px solid #F8F7F6;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+  content: "";
+}
+
+.rankingtoggle { text-align: right; }
+.rankingtoggle__list {
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 20px;
+  border: 1px solid #EDD634;
+  border-radius: 3px;
+  font-size: 0;
+}
+.rankingtoggle__list > li {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.rankingtoggle__list > li:not(:first-child) { border-left: 1px solid #EDD634 }
+.rankingtoggle__list > li:hover,
+.rankingtoggle__list > .is-active {
+  background-color: #EDD634;
+  color: #fff;
+}
+
+.ranking { counter-reset: ranking; }
+.ranking > li { position: relative; }
+.ranking > li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 40px solid transparent;
+  border-left: 40px solid #258fb8;
+  content: "";
+}
+.ranking > li:nth-child(1)::before { border-left-color: #EDD634; }
+.ranking > li:nth-child(2)::before { border-left-color: #d2d8e0; }
+.ranking > li:nth-child(3)::before { border-left-color: #C47222; }
+.ranking > li::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  width: 25px;
+  line-height: 25px;
+  font-size: 1.4rem;
+  text-align: center;
+  content: counter(ranking);
+  counter-increment: ranking;
+}

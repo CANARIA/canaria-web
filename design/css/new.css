@@ -1,0 +1,74 @@
+.new > li {
+  width: 250px;
+  margin-bottom: 20px;
+  transition: transform .2s;
+}
+.new__link {
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+.new__link__body {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .9));
+  transition: all .2s;
+}
+.new__link__body__inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  color: #fff;
+  backface-visibility: hidden;
+}
+.new > li:hover {
+  z-index: 5;
+  transform: scale(1.1);
+}
+.new > li:hover .new__link__body { top: 0; }
+.new__link__body__head {
+  display: flex;
+  justify-content: space-between;
+}
+.new__link__body__name {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+.new__link__body__favo {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #8899a6;
+  font-size: 1.4rem;
+  vertical-align: middle;
+}
+.new__link__body__favo:hover,
+.new__link__body__favo.is-active { color: #df5656; }
+.new__link__body__favo::before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  background-image: url(../images/heart_gray.png);
+  background-size: 100% auto;
+  vertical-align: -4px;
+  content: "";
+}
+.new__link__body__favo:hover::before,
+.new__link__body__favo.is-active::before { background-image: url(../images/heart.png); }
+.new__link__body__button {
+  display: block;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-size: 1.2rem;
+  line-height: 30px;
+  text-align: center;
+}
+.new__link__body__button:hover {
+  background-color: #fff;
+  color: #222;
+}
