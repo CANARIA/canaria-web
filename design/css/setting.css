@@ -1,0 +1,109 @@
+.setting { background-color: #F8F7F6; }
+.setting__inner {
+  display: flex;
+  max-width: 1020px;
+  min-width: 960px;
+  margin: 0 auto;
+  padding: 60px 20px 20px;
+}
+.setting__side { width: 280px; }
+.setting__side__inner {
+  padding: 20px;
+  background-color: #fff;
+}
+.setting__side__title {
+  margin-bottom: 10px;
+  color: #222;
+  font-size: 1.2rem;
+}
+.setting__side__list > li {
+  padding: 5px 0;
+}
+.setting__side__link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 3px;
+  font-size: 1.4rem;
+}
+.setting__side__link.is-active,
+.setting__side__link:hover {
+  background-color: #EDD634;
+  color: #fff;
+}
+
+.setting__main {
+  flex: 1;
+  padding-left: 20px;
+}
+.setting__main__inner { background-color: #fff; }
+.setting__main__title {
+  padding: 20px;
+  border-bottom: 1px solid #e8e8e8;
+  font-size: 1.6rem;
+}
+.setting__main__box {
+  padding: 10px 20px 20px;
+}
+
+.setting__list { margin-bottom: 10px; }
+.setting__list > li { display: flex; }
+.setting__name {
+  width: 150px;
+  padding: 16px 10px 10px;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  text-align: right;
+}
+.setting__body {
+  flex: 1;
+  padding: 10px;
+}
+.setting__input {
+  width: 50%;
+  padding: 6px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  font-size: 1.4rem;
+}
+.setting__input.is-wide { width: 100%; }
+.setting__textarea {
+  width: 100%;
+  height: 100px;
+  padding: 6px 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  resize: none;
+}
+.setting__wrap { margin-bottom: 10px; }
+.setting__attention {
+  color: #8899a6;
+  font-size: 1.2rem;
+}
+.setting__link {
+  color: #258fb8;
+  font-size: 1.2rem;
+}
+.setting__thumb {
+  display: inline-block;
+  overflow: hidden;
+  border: 1px solid #e8e8e8;
+  border-radius: 3px;
+}
+.setting__submit {
+  display: block;
+  width: 120px;
+  margin: 0 auto;
+  border-radius: 3px;
+  background-color: #EDD634;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 34px;
+  cursor: pointer;
+}
+.setting__delete {
+  margin-top: 20px;
+  color: #8899a6;
+  font-size: 1.0rem;
+  text-align: right;
+}

@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/common.css">
-  <link rel="stylesheet" href="css/top.css">
+  <link rel="stylesheet" href="css/setting.css">
 </head>
 <body>
 
@@ -27,193 +27,90 @@
 </header>
 
 <div class="main">
-  <div class="sidebar">
-    <div class="sidebar__item profile">
-      <div class="profile__main">
-        <div class="profile__main__icon">
-          <a href="post.html"><img src="images/profile.png" width="40px" height="auto" alt=""></a>
+  <div class="setting">
+    <div class="setting__inner">
+      <aside class="setting__side">
+        <div class="setting__side__inner">
+          <p class="setting__side__title">設定</p>
+          <ul class="setting__side__list">
+            <li>
+              <a class="setting__side__link" href="setting.html">ユーザー設定</a>
+            </li>
+            <li>
+              <a class="setting__side__link is-active" href="setting_profile.html">プロフィール設定</a>
+            </li>
+            <li>
+              <a class="setting__side__link" href="setting_password.html">パスワード</a>
+            </li>
+          </ul>
         </div>
-        <div class="profile__main__name">
-          <p class="profile__main__name__didplay"><a href="post.html" class="text-link">なべりをです</a></p>
-          <p class="profile__main__name__id"><a href="post.html" class="text-link">@nabeliwo</a></p>
+      </aside>
+
+      <main class="setting__main">
+        <div class="setting__main__inner">
+          <p class="setting__main__title">ユーザー設定</p>
+
+          <div class="setting__main__box">
+            <form class="setting__box">
+              <ul class="setting__list">
+                <li>
+                  <div class="setting__name">
+                    <p>プロフィール画像</p>
+                  </div>
+                  <div class="setting__body">
+                    <div class="setting__wrap">
+                      <div class="setting__thumb"><img src="images/profile.png" width="100px" height="auto" alt=""></div>
+                    </div>
+                    <input type="file">
+                  </div>
+                </li>
+                <li>
+                  <div class="setting__name">
+                    <p>ユーザーネーム</p>
+                  </div>
+                  <div class="setting__body">
+                    <input type="text" class="setting__input" value="nabeliwoです">
+                  </div>
+                </li>
+                <li>
+                  <div class="setting__name">
+                    <p>HPアドレス</p>
+                  </div>
+                  <div class="setting__body">
+                    <input type="text" class="setting__input is-wide" value="https://nabeliwo.me">
+                  </div>
+                </li>
+                <li>
+                  <div class="setting__name">
+                    <p>自己紹介</p>
+                  </div>
+                  <div class="setting__body">
+                    <textarea class="setting__textarea">Web Application Developer. ❤ React / Redux / The Legend of Zelda / Splatoon / Sword Art Online / Drum / Mixture Rock / Kichijoji</textarea>
+                  </div>
+                </li>
+              </ul>
+              <button class="setting__submit">変更を保存する</button>
+            </form>
+          </div>
         </div>
-      </div>
-
-      <div class="profile__body">
-        <ul class="profile__data">
-          <li>
-            <p class="profile__data__title">投稿</p>
-            <p class="profile__data__num"><a class="text-link" href="post.html">10</a></p>
-          </li>
-          <li>
-            <p class="profile__data__title">フォロー</p>
-            <p class="profile__data__num"><a class="text-link" href="follow.html">13</a></p>
-          </li>
-          <li>
-            <p class="profile__data__title">フォロワー</p>
-            <p class="profile__data__num"><a class="text-link" href="follower.html">13</a></p>
-          </li>
-          <li>
-            <p class="profile__data__title">いいね</p>
-            <p class="profile__data__num"><a class="text-link" href="favo.html">20</a></p>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sidebar__item">
-      <div class="tags">
-        <p class="sidebar__title">人気のタグ</p>
-
-        <ul class="tags__list">
-          <li><a href="tag.html" class="text-link tags__link"># 男の娘</a></li>
-          <li><a href="tag.html" class="text-link tags__link"># ケモナー</a></li>
-          <li><a href="tag.html" class="text-link tags__link"># 18禁</a></li>
-          <li><a href="tag.html" class="text-link tags__link"># デブ専</a></li>
-        </ul>
-      </div>
+      </main>
     </div>
   </div>
 
-  <div class="contents">
-    <ul class="contents__tag">
-      <li><a class="contents__teg__link is-active" href="index.html">フィード</a></li>
-      <li><a class="contents__teg__link" href="ranking.html">ランキング</a></li>
-      <li><a class="contents__teg__link" href="new.html">新着</a></li>
-      <li><a class="contents__teg__link" href="tag.html">タグ</a></li>
-    </ul>
+  <footer class="footer">
+    <p class="footer__logo"><a href="index.html">canaria</a></p>
 
-    <div class="contents__main">
-      <div class="feed">
-        <ul class="feed__list">
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/01.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo is-active">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/02.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more js-btn" data-popup="4"></a>
-              </div>
-            </div>
-            <p class="feed_share">shared by <a href="post.html" class="text-link">@suzumi</a></p>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/03.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/04.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/05.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/06.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/07.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/08.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="feed__thumb">
-              <a href="detail.html"><img src="images/09.jpg" alt=""></a>
-            </div>
-            <div class="feed__info">
-              <p class="feed__name"><a href="post.html" class="text-link">@nabeliwo</a></p>
-              <div class="feed__right">
-                <p class="feed__favo">10</p>
-                <a class="feed__more"></a>
-              </div>
-            </div>
-          </li>
-        </ul>
+    <div class="footer__inner">
+      <p class="footer__copy">© 2017 canaria</p>
+
+      <div class="footer__bottom__right">
+        <p class="footer__text"><a href="" class="text-link">利用規約</a></p>
+        <p class="footer__text"><a href="" class="text-link">プライバシー</a></p>
+        <p class="footer__text"><a href="" class="text-link">ヘルプ</a></p>
+        <p class="footer__text"><a href="" class="text-link footer__opinion js-btn" data-popup="5">フィードバック</a></p>
       </div>
     </div>
-
-    <footer class="footer">
-      <p class="footer__logo"><a href="index.html">canaria</a></p>
-
-      <div class="footer__inner">
-        <p class="footer__copy">© 2017 canaria</p>
-
-        <div class="footer__bottom__right">
-          <p class="footer__text"><a href="" class="text-link">利用規約</a></p>
-          <p class="footer__text"><a href="" class="text-link">プライバシー</a></p>
-          <p class="footer__text"><a href="" class="text-link">ヘルプ</a></p>
-          <p class="footer__text"><a href="" class="text-link footer__opinion js-btn" data-popup="5">フィードバック</a></p>
-        </div>
-      </div>
-    </footer>
-  </div>
+  </footer>
 </div>
 
 <div class="popup popup--profile js-popup" data-popup="1">

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>canaria</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<div class="container">
+  <div class="setting">
+    <div class="main">
+      <div class="main__tab">
+        <ul class="main__tab__list js-tab">
+          <li class="is-cursor"></li>
+          <li class="is-dropper"></li>
+          <li class="is-pen is-active"></li>
+          <li class="is-eraser"></li>
+          <li class="is-bucket"></li>
+        </ul>
+      </div>
+
+      <div class="main__box">
+        <div class="color">
+          <div class="color__top">
+            <div class="color__palette">
+              <div class="color__palette__main">
+                <div class="color__palette__overlay">
+                  <div class="color__palette__overlay__inner"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="color__bar">
+              <div class="color__bar__inner"></div>
+            </div>
+          </div>
+
+          <div class="color__bottom">
+            <div class="color__bottom__cell">
+              <div class="color__current"></div>
+            </div>
+
+            <div class="color__bottom__cell">
+              <p># <input class="color__hex" type="text" value="261ddd"></p>
+            </div>
+
+            <div class="color__bottom__cell">
+              <p>rgb <input class="color__rgb" type="text" value="38">, <input class="color__rgb" type="text" value="29">, <input class="color__rgb" type="text" value="221"></p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="main__box__list js-area">
+          <li class="is-pen is-active">
+            <div class="tool">
+              <p class="tool__title">ペン</p>
+
+              <div class="tool__body">
+                <ul class="tool__list">
+                  <li>
+                    <div class="tool__head">
+                      <p class="tool__text">太さ：</p>
+                      <div><input class="tool__input" type="text" value="10"> px</div>
+                    </div>
+                    <div class="tool__bottom">
+                      <div class="tool__range">
+                        <input class="tool__range__bar" type="range" min="1" max="500" value="10">
+                      </div>
+                      <div class="tool__view is-thickness"></div>
+                    </div>
+                  </li>
+
+                  <li>
+                    <div class="tool__head">
+                      <p class="tool__text">透明度：</p>
+                      <div><input class="tool__input" type="text" value="50"> %</div>
+                    </div>
+                    <div class="tool__bottom">
+                      <div class="tool__range">
+                        <input class="tool__range__bar" type="range" min="1" max="100" value="50">
+                      </div>
+                      <div class="tool__view is-opacity"></div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="layer">
+      <p class="title">レイヤー</p>
+
+      <div class="layer__main">
+        <ul class="layer__list">
+          <li>
+            <div class="layer__list__eye"></div>
+            <div class="layer__list__item is-active">
+              <div class="layer__list__item__thumb"><img src="images/layer_smell.png" width="100%" height="auto" alt=""></div>
+              <p class="layer__list__item__name">うんこのにおい</p>
+            </div>
+          </li>
+          <li>
+            <div class="layer__list__eye"></div>
+            <div class="layer__list__item">
+              <div class="layer__list__item__thumb"><img src="images/layer_unko.png" width="100%" height="auto" alt=""></div>
+              <p class="layer__list__item__name">うんこ</p>
+            </div>
+          </li>
+          <li>
+            <div class="layer__list__eye is-close"></div>
+            <div class="layer__list__item">
+              <div class="layer__list__item__thumb"><img src="images/layer_dummy.png" width="100%" height="auto" alt=""></div>
+              <p class="layer__list__item__name">ダミー</p>
+            </div>
+          </li>
+          <li>
+            <div class="layer__list__eye is-close"></div>
+            <div class="layer__list__item">
+              <div class="layer__list__item__thumb"><img src="images/layer_dummy.png" width="100%" height="auto" alt=""></div>
+              <p class="layer__list__item__name">ダミー</p>
+            </div>
+          </li>
+          <li>
+            <div class="layer__list__eye is-close"></div>
+            <div class="layer__list__item">
+              <div class="layer__list__item__thumb"><img src="images/layer_dummy.png" width="100%" height="auto" alt=""></div>
+              <p class="layer__list__item__name">ダミー</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="layer__bottom">
+        <div class="layer__bottom__opacity">
+          透明度：<input class="layer__bottom__opacity__num" type="text" value="0"> %
+        </div>
+        <div class="layer__bottom__buttons">
+          <button class="layer__bottom__buttons__button is-layer"></button>
+          <button class="layer__bottom__buttons__button is-garbage js-btn" data-popup="5"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="canvas"><img src="images/sample.png" width="200px" height="auto" alt=""></div>
+
+  <div class="meta">
+    <button class="meta__item is-projects js-btn" data-popup="1"></button>
+    <button class="meta__item is-upload js-btn" data-popup="2"></button>
+    <button class="meta__item is-pin js-btn" data-popup="3"></button>
+    <button class="meta__item is-garbage js-btn" data-popup="4"></button>
+  </div>
+</div>
+
+<div class="popup js-popup" data-popup="1">
+  <div class="popup__inner">
+    <p class="popup__title">プロジェクト一覧</p>
+
+    <div class="project">
+      <div class="project__top">
+        <a href="editor.html" class="project__button is-new">新規作成</a>
+        <a href="index.html" class="project__button is-home">ホームに戻る</a>
+        <button class="project__button is-close js-btn" data-popup="1">閉じる</button>
+      </div>
+
+      <ul class="project__list">
+        <li>
+          <div class="project__item">
+            <img src="images/sample.png" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">うんこ</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/01.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/02.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/03.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/04.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/05.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/06.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/07.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <div class="project__item">
+            <img src="images/08.jpg" width="100%" height="auto" alt="">
+
+            <div class="project__body">
+              <p class="project__body__name">わーい</p>
+              <a href="editor.html" class="project__body__edit"></a>
+              <p class="project__body__date">2017/02/07</p>
+              <button class="project__body__delete js-btn" data-popup="4"></button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="popup js-popup" data-popup="2">
+  <div class="popup__inner">
+    <p class="popup__title">投稿</p>
+
+    <div class="post">
+      <div class="post__thumb"><img src="images/sample.png" width="100%" height="auto" alt=""></div>
+
+      <form class="post__body">
+        <ul class="post__form">
+          <li>
+            <p class="post__form__name">タイトル</p>
+            <div class="post__form__input"><input type="text" class="post__input" value="うんこの絵"></div>
+          </li>
+          <li>
+            <p class="post__form__name">タグ</p>
+            <div class="post__form__input">
+              <input type="text" class="post__input" value="19禁, 初投稿, 汚い">
+              <p class="post__attention">カンマで区切ります。</p>
+            </div>
+          </li>
+          <li>
+            <p class="post__form__name">説明文</p>
+            <div class="post__form__input"><textarea class="post__textarea">この絵はどうのこうのあーだこーだどうのこうのあーだこーだどうのこうのあーだこーだそんなわけでどんなわけでこんなわけでこれは枠を埋めるための無意味なテキストですこれは枠を埋めるための無意味なテキストですこれは枠を埋めるための無意味なテキストです。</textarea></div>
+          </li>
+        </ul>
+
+        <div class="post__buttons">
+          <button class="post__button is-post" type="submit">投稿</button>
+          <button class="post__button is-cancel js-btn" data-popup="2">キャンセル</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="popup js-popup" data-popup="3">
+  <div class="popup__inner">
+    <p class="popup__title">保存</p>
+
+    <div class="save">
+      <ul class="save__head">
+        <li>
+          <p class="save__name">保存の仕方</p>
+          <div class="save__radio">
+            <label class="save__radio__label"><input type="radio" name="type"> 上書き保存</label>
+            <label class="save__radio__label"><input type="radio" name="type" checked> 別名で保存</label>
+          </div>
+        </li>
+        <li>
+          <p class="save__name">タイトル</p>
+          <input type="text" class="save__input" value="うんこの絵">
+        </li>
+      </ul>
+
+      <div class="save__bottom">
+        <button class="save__button is-post">保存</button>
+        <button class="save__button is-cancel js-btn" data-popup="3">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup js-popup" data-popup="4">
+  <div class="popup__inner">
+    <p class="popup__title">削除</p>
+
+    <div class="delete">
+      <p class="delete__text">このプロジェクトを削除しますか？</p>
+      <p class="delete__attention">※二度と復元できません。</p>
+
+      <div class="delete__bottom">
+        <button class="delete__button is-delete">削除する</button>
+        <button class="delete__button is-cancel js-btn" data-popup="4">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup js-popup" data-popup="5">
+  <div class="popup__inner">
+    <div class="delete">
+      <p class="delete__text is-layer">レイヤー「うんこのにおい」を削除しますか？</p>
+
+      <div class="delete__bottom">
+        <button class="delete__button is-delete">削除する</button>
+        <button class="delete__button is-cancel js-btn" data-popup="5">キャンセル</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script>
+$(() => {
+  const $btn = $('.js-btn');
+  const $popup = $('.js-popup');
+
+  $btn.on('click', function(e) {
+    e.preventDefault();
+
+    const $clickedBtn = $(this);
+    const numStr = $clickedBtn.data('popup');
+
+    $popup.each(function() {
+      const $item = $(this);
+
+      if ($item.data('popup') === numStr) {
+        $item.toggleClass('is-active');
+      }
+    });
+  });
+
+  const $tabs = $('.js-tab').children('li');
+
+  $tabs.on('click', function() {
+    const $clickedTab = $(this);
+
+    $tabs.removeClass('is-active');
+    $clickedTab.addClass('is-active');
+  });
+});
+</script>
+</body>
+</html>
