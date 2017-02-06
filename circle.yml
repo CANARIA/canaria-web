@@ -14,7 +14,3 @@ dependencies:
     - yarn install
     - yarn run lint
     - yarn run build
-
-test:
-  override:
-    - yarn test
