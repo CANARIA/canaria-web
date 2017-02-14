@@ -23,7 +23,7 @@ function server(reload) {
         }
       })
       // ここで時間をあけないと上手くreloadされない
-      .on('restart', () => setTimeout(reload, 700));
+      .on('restart', () => setTimeout(reload, 1000));
   };
 }
 
