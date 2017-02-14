@@ -6,7 +6,6 @@
     "postcss-custom-properties",
     "postcss-custom-media",
     "postcss-nesting",
-
     "autoprefixer",
     "postcss-flexbugs-fixes",
     "postcss-sorting",
@@ -14,8 +13,14 @@
   ],
   "autoprefixer": {
     "browsers": [
-      "last 2 versions",
-      "safari >= 7"
+      "ie >= 11",
+      "last 2 Edge versions",
+      "last 2 Firefox versions",
+      "last 2 Chrome versions",
+      "last 2 Safari versions",
+      "last 2 Opera versions",
+      "last 2 iOS versions",
+      "last 2 ChromeAndroid versions"
     ]
   }
 }
