@@ -1,0 +1,37 @@
+.l-auth {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #ddd;
+}
+
+.l-auth__box {
+  display: flex;
+  align-items: center;
+}
+
+.l-auth__bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.l-auth__nav {
+  padding: 20px 0;
+  background-color: rgba(255, 255, 255, .9);
+  font-size: 0;
+  text-align: center;
+
+  & > li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+.l-auth__link {
+  font-size: 1.2rem;
+  color: var(--color-font-gray);
+
+  &:hover { text-decoration: underline; }
+}
