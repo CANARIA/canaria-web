@@ -1,5 +1,5 @@
 function reducer(state = {}, action) {
-  window.console.log(action);
+  console.log(action);
   return state;
 }
 

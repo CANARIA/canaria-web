@@ -2,7 +2,6 @@ import path from 'path';
 import Express from 'express';
 import compression from 'compression';
 
-import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 
