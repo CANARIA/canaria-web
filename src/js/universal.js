@@ -1,3 +1,4 @@
+import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
