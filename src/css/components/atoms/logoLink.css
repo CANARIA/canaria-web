@@ -1,5 +1,11 @@
 .a-logoLink {
   display: inline-block;
+  width: 100px;
+  height: 39px;
 
   &:hover { opacity: .7; }
+
+  &.black {
+    
+  }
 }

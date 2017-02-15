@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoLinkBlack from '../../../atoms/logoLink/logoLinkBlack';
+import LogoLink from '../../../atoms/logoLink/logoLink';
 import TextLink from '../../../atoms/textLink/textLink';
 
 export default class SignUp extends React.Component {
@@ -12,7 +12,7 @@ export default class SignUp extends React.Component {
     return (
       <div className="l-auth">
         <div className="l-auth__head">
-          <LogoLinkBlack url="/" />
+          <LogoLink url="/" modifier="black" />
 
           <div className="l-auth__nav">
             <ul className="l-auth__list">

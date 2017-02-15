@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 
 import reducer from './reducers';
 import App from './components/app';
-import SignUp from './components/templates/auth/signUp/signUp';
-import Top from './components/templates/top/top';
-import User from './components/templates/user/user';
-import NotFound from './components/templates/notFound/notFound';
+import SignUp from './components/ui/templates/auth/signUp/signUp';
+import Top from './components/ui/templates/top/top';
+import User from './components/ui/templates/user/user';
+import NotFound from './components/ui/templates/notFound/notFound';
 
 export const routes = (
   <Route path="/" component={App}>
