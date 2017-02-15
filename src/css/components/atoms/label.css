@@ -1,0 +1,5 @@
+.a-label {
+  display: block;
+  font-size: 1.4rem;
+}
+.a-label.gray { color: var(--color-font-gray); }

@@ -22,5 +22,22 @@
 
 /* atoms */
 
+@import "./components/atoms/button";
+@import "./components/atoms/buttonLink";
 @import "./components/atoms/logoLink";
 @import "./components/atoms/textLink";
+@import "./components/atoms/textButton";
+@import "./components/atoms/title";
+@import "./components/atoms/label";
+@import "./components/atoms/inputText";
+
+/* molecules */
+
+@import "./components/molecules/columnList";
+@import "./components/molecules/formList";
+
+/* organisms */
+
+@import "./components/organisms/authHeader";
+@import "./components/organisms/authForm";
+@import "./components/organisms/authFooter";

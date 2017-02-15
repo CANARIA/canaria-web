@@ -1,0 +1,7 @@
+.m-columnList { font-size: 0; }
+.m-columnList > li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.m-columnList > li:first-child { margin-left: 0; }
+.m-columnList > li:last-child { margin-right: 0; }

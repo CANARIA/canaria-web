@@ -1,0 +1,6 @@
+.o-authForm {
+  width: 300px;
+  padding: 20px;
+}
+.o-authForm__title,
+.o-authForm__body { margin-bottom: 20px; }

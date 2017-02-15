@@ -1,0 +1,17 @@
+.a-button {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.4rem;
+  line-height: 34px;
+  border-radius: 3px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  cursor: pointer;
+}
+.a-button:hover { filter: brightness(1.1); }
+
+.a-button.primary,
+.a-button.theme { color: var(--color-white); }
+
+.a-button.primary { background-color: var(--color-blue); }
+.a-button.theme { background-color: var(--color-theme); }

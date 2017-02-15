@@ -4,8 +4,6 @@
   "use": [
     "postcss-import",
     "postcss-custom-properties",
-    "postcss-custom-media",
-    "postcss-nesting",
     "autoprefixer",
     "postcss-flexbugs-fixes",
     "postcss-sorting",
