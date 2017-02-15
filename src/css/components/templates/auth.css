@@ -1,37 +1,95 @@
 .l-auth {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ddd;
+  background: no-repeat url(https://dl.dropboxusercontent.com/s/wwok3b3fzyw1z93/signup_back.jpg) center center #ddd;
+  background-size: cover;
 }
 
-.l-auth__box {
-  display: flex;
-  align-items: center;
-}
-
-.l-auth__bottom {
+.l-auth__head {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: 0 20px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, .95);
 }
-.l-auth__nav {
-  padding: 20px 0;
-  background-color: rgba(255, 255, 255, .9);
+
+.l-auth__list {
   font-size: 0;
-  text-align: center;
 
   & > li {
     display: inline-block;
     margin: 0 10px;
   }
 }
-.l-auth__link {
-  font-size: 1.2rem;
-  color: var(--color-font-gray);
 
-  &:hover { text-decoration: underline; }
+.l-auth__main {
+  width: 300px;
+  height: 200px;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, .95);
 }
+.l-auth__foot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255, 255, 255, .95);
+}
+
+/*.l-auth {
+
+}
+
+.l-auth__main {
+
+}
+
+.l-auth__box { position: relative; }
+
+.l-auth__mail__form {
+  width: 300px;
+  padding: 20px;
+
+}
+.l-auth__logo {
+  width: 200px;
+  margin: 0 auto 20px;
+}
+.l-auth__title {
+  margin-bottom: 20px;
+  color: var(--color-font-gray);
+  font-size: 2.0rem;
+  font-weight: bold;
+  text-align: center;
+}
+.l-auth__mail__body {
+  margin-bottom: 20px;
+
+  & > input {
+    width: 100%;
+    border: 1px solid #e8e8e8;
+    padding: 8px;
+    background-color: #fff;
+    font-size: 1.2rem;
+  }
+}
+.l-auth__button {
+  display: block;
+  width: 100%;
+  border-radius: 3px;
+  background-color: #EDD634;
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 34px;
+  cursor: pointer;
+}
+*/

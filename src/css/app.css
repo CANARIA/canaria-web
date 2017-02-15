@@ -19,3 +19,8 @@
 /* templates */
 
 @import "./components/templates/auth";
+
+/* atoms */
+
+@import "./components/atoms/logoLink";
+@import "./components/atoms/textLink";

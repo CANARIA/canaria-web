@@ -1,6 +1,7 @@
 :root {
-  --color-theme : #EDD634;
+  --color-theme           : #EDD634;
 
-  --color-font-black : #222;
-  --color-font-gray : #666;
+  --color-font-black      : #222;
+  --color-font-gray       : #666;
+  --color-font-light-gray : #8899a6;
 }
