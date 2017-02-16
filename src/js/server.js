@@ -52,4 +52,6 @@ function handleRender(req, res) {
 app.use(compression());
 app.use(Express.static(path.join(__dirname, '../../dist')));
 app.use(handleRender);
-app.listen(PORT);
+app.listen(PORT, () => {
+  global.console.log(`Express server listening on ${PORT}`);
+});

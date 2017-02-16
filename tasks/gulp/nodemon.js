@@ -13,6 +13,7 @@ function server(reload) {
         NODE_ENV: 'development',
         PORT: 3000,
       },
+      stdout: false
     });
 
     return stream
@@ -22,8 +23,19 @@ function server(reload) {
           callback();
         }
       })
-      // ここで時間をあけないと上手くreloadされない
-      .on('restart', () => setTimeout(reload, 1000));
+      .on('readable', function onReadable() {
+        this.stdout.on('data', (chunk) => {
+          if (/Express server listening on/.test(chunk)) {
+            reload();
+          }
+
+          process.stdout.write(chunk);
+        });
+
+        this.stderr.on('data', (chunk) => {
+          process.stderr.write(chunk);
+        });
+      });
   };
 }
 
