@@ -1,23 +1,21 @@
 import React from 'react';
-import LogoLink from '../../atoms/logoLink/logoLink';
-import TextLink from '../../atoms/textLink/textLink';
-import ButtonLink from '../../atoms/buttonLink/buttonLink';
-import ColumnList from '../../molecules/columnList/columnList';
+import Icon from '../../atoms/icon/icon';
+import TextButton from '../../atoms/textButton/textButton';
+import Button from '../../atoms/button/button';
+import Column from '../../molecules/column/column';
 
-export default ({ authButton }) => (
+export default ({ anotherAuth }) => (
   <div className="o-authHeader">
-    <LogoLink to="/" modifier="black" />
+    <Button to="/"><Icon name="logo" /></Button>
 
-    <div className="l-auth-nav">
-      <ColumnList
-        iteratorKey="head"
-        list={[
-          <TextLink to="/ranking" modifier="gray">ランキング</TextLink>,
-          <TextLink to="/new" modifier="gray">新着</TextLink>,
-          <TextLink to="/tag" modifier="gray">タグ</TextLink>,
-          <ButtonLink to={authButton.to} modifier="primary">{authButton.text}</ButtonLink>
-        ]}
-      />
-    </div>
+    <Column
+      iteratorKey="authHeader"
+      list={[
+        <TextButton to="/ranking" modifier="theme-gray size-m">ランキング</TextButton>,
+        <TextButton to="/new" modifier="theme-gray size-m">新着</TextButton>,
+        <TextButton to="/tag" modifier="theme-gray size-m">タグ</TextButton>,
+        <Button to={anotherAuth.to} modifier="theme-secondary size-m">{anotherAuth.text}</Button>
+      ]}
+    />
   </div>
 );

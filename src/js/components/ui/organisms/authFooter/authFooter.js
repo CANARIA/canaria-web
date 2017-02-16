@@ -1,17 +1,16 @@
 import React from 'react';
-import TextLink from '../../atoms/textLink/textLink';
 import TextButton from '../../atoms/textButton/textButton';
-import ColumnList from '../../molecules/columnList/columnList';
+import Column from '../../molecules/column/column';
 
 export default () => (
   <div className="o-authFooter">
-    <ColumnList
+    <Column
       iteratorKey="foot"
       list={[
-        <TextLink to="/terms" modifier="gray">利用規約</TextLink>,
-        <TextLink to="/privacy" modifier="gray">プライバシー</TextLink>,
-        <TextLink to="/help" modifier="gray">ヘルプ</TextLink>,
-        <TextButton modifier="gray">フィードバック</TextButton>
+        <TextButton to="/terms" modifier="theme-gray size-m">利用規約</TextButton>,
+        <TextButton to="/privacy" modifier="theme-gray size-m">プライバシー</TextButton>,
+        <TextButton to="/help" modifier="theme-gray size-m">ヘルプ</TextButton>,
+        <TextButton modifier="theme-gray size-m">フィードバック</TextButton>
       ]}
     />
   </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../components/ui/templates/auth/auth';
+import Auth from '../components/ui/pages/auth/auth';
 
 export default class Login extends React.Component {
 
@@ -10,22 +10,30 @@ export default class Login extends React.Component {
   render() {
     return (
       <Auth
-        authButton={{
+        anotherAuth={{
           to: '/signup',
           text: '新規登録'
         }}
         form={{
           title: 'ログイン',
-          list: [
+          fieldList: [
             {
+              error: '',
+              name: 'mailaddress',
               label: 'メールアドレス',
-              name: 'MailAddress',
-              placeholder: 'メールアドレスを入力'
+              input: {
+                type: 'text',
+                placeholder: 'メールアドレスを入力'
+              }
             },
             {
-              label: 'パスワード',
+              error: '',
               name: 'password',
-              placeholder: 'パスワードを入力'
+              label: 'パスワード',
+              input: {
+                type: 'password',
+                placeholder: 'パスワードを入力'
+              }
             }
           ],
           submitText: 'ログイン'

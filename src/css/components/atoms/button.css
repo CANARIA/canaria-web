@@ -1,17 +1,31 @@
+/*-------------------------------------//
+//  Commmon
+//-------------------------------------*/
+
 .a-button {
   display: inline-block;
-  width: 100%;
-  font-size: 1.4rem;
-  line-height: 34px;
+  line-height: 1;
   border-radius: 3px;
-  font-size: 1.4rem;
-  cursor: pointer;
   cursor: pointer;
 }
 .a-button:hover { filter: brightness(1.1); }
 
-.a-button.primary,
-.a-button.theme { color: var(--color-white); }
 
-.a-button.primary { background-color: var(--color-blue); }
-.a-button.theme { background-color: var(--color-theme); }
+/*-------------------------------------//
+//  Modifier
+//-------------------------------------*/
+
+/* theme */
+
+.a-button.theme-primary,
+.a-button.theme-secondary { color: var(--color-white); }
+.a-button.theme-primary { background-color: var(--color-primary); }
+.a-button.theme-secondary { background-color: var(--color-secondary); }
+
+/* size */
+
+.a-button.size-wide { width: 100%; }
+.a-button.size-m {
+  font-size: 1.4rem;
+  padding: 10px;
+}

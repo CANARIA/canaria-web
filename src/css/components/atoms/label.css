@@ -1,5 +1,21 @@
+/*-------------------------------------//
+//  Commmon
+//-------------------------------------*/
+
 .a-label {
-  display: block;
-  font-size: 1.4rem;
+  display: inline-block;
+  cursor: pointer;
 }
-.a-label.gray { color: var(--color-font-gray); }
+
+
+/*-------------------------------------//
+//  Modifier
+//-------------------------------------*/
+
+/* theme */
+
+.a-label.theme-gray { color: var(--color-font-gray); }
+
+/* size */
+
+.a-label.size-m { font-size: 1.4rem; }

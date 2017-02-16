@@ -2,17 +2,14 @@
 //  Commmon
 //-------------------------------------*/
 
-.a-title { font-weight: bold; }
+.a-icon { display: inline-block; }
 
+/*消す*/
+.a-icon {
+  width: 100px;
+  height: 39px;
+}
 
 /*-------------------------------------//
 //  Modifier
 //-------------------------------------*/
-
-/* theme */
-
-.a-title.theme-gray { color: var(--color-font-gray); }
-
-/* size */
-
-.a-title.size-m { font-size: 2.0rem; }

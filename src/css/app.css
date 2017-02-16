@@ -13,28 +13,28 @@
 @import "./foundations/base";
 
 /*-------------------------------------//
-//  Components
+//  Pages
 //-------------------------------------*/
 
-/* templates */
+@import "./pages/auth";
 
-@import "./components/templates/auth";
+/*-------------------------------------//
+//  Components
+//-------------------------------------*/
 
 /* atoms */
 
 @import "./components/atoms/button";
-@import "./components/atoms/buttonLink";
-@import "./components/atoms/logoLink";
-@import "./components/atoms/textLink";
+@import "./components/atoms/input";
+@import "./components/atoms/icon";
 @import "./components/atoms/textButton";
 @import "./components/atoms/title";
 @import "./components/atoms/label";
-@import "./components/atoms/inputText";
 
 /* molecules */
 
-@import "./components/molecules/columnList";
-@import "./components/molecules/formList";
+@import "./components/molecules/column";
+@import "./components/molecules/field";
 
 /* organisms */
 

@@ -10,19 +10,19 @@ export default class Auth extends React.Component {
   }
 
   render() {
-    const { authButton, form } = this.props;
+    const { anotherAuth, form } = this.props;
 
     return (
-      <div className="l-auth">
-        <div className="l-auth-head">
-          <AuthHeader authButton={authButton} />
+      <div className="p-auth">
+        <div className="p-auth-head">
+          <AuthHeader anotherAuth={anotherAuth} />
         </div>
 
-        <div className="l-auth-main">
-          <AuthForm form={form} />
+        <div className="p-auth-main">
+          <AuthForm {...form} />
         </div>
 
-        <div className="l-auth-foot">
+        <div className="p-auth-foot">
           <AuthFooter />
         </div>
       </div>

@@ -1,4 +1,4 @@
-.l-auth {
+.p-auth {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,22 +6,22 @@
   background: no-repeat url(https://dl.dropboxusercontent.com/s/wwok3b3fzyw1z93/signup_back.jpg) center center #ddd;
   background-size: cover;
 }
-.l-auth-head {
+.p-auth-head {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
 }
-.l-auth-nav {
+.p-auth-nav {
   display: flex;
   align-items: center;
 }
-.l-auth-main {
+.p-auth-main {
   border-radius: 3px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   background-color: rgba(255, 255, 255, .95);
 }
-.l-auth-foot {
+.p-auth-foot {
   position: fixed;
   bottom: 0;
   left: 0;

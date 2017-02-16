@@ -2,5 +2,9 @@
   width: 300px;
   padding: 20px;
 }
-.o-authForm__title,
+.o-authForm__title {
+  margin-bottom: 20px;
+  text-align: center;
+}
 .o-authForm__body { margin-bottom: 20px; }
+.o-authForm__body > li:not(:first-child) { margin-top: 15px; }

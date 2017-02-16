@@ -1,18 +1,22 @@
 import React from 'react';
-import FormList from '../../molecules/formList/formList';
+import Field from '../../molecules/field/field';
 import Title from '../../atoms/title/title';
 import Button from '../../atoms/button/button';
 
-export default ({ form }) => (
-  <form className="o-authForm">
-    <div className="o-authForm__title">
-      <Title modifier="center gray">{form.title}</Title>
-    </div>
+export default ({ title, fieldList, submitText }) => {
+  const list = fieldList.map(item => <li key={item.name}><Field {...item} /></li>);
 
-    <div className="o-authForm__body">
-      <FormList list={form.list} />
-    </div>
+  return (
+    <form className="o-authForm">
+      <div className="o-authForm__title">
+        <Title modifier="theme-gray size-m">{title}</Title>
+      </div>
 
-    <Button modifier="theme">{form.submitText}</Button>
-  </form>
-);
+      {list.length &&
+        <ul className="o-authForm__body">{list}</ul>
+      }
+
+      <Button modifier="theme-primary size-wide size-m">{submitText}</Button>
+    </form>
+  );
+};
