@@ -5,6 +5,7 @@ const Input = ({
   name,
   placeholder,
   type = 'text',
+  required = false,
   modifier = '',
   styles = {}
 }) => (
@@ -14,6 +15,7 @@ const Input = ({
     name={name}
     placeholder={placeholder}
     type={type}
+    required={required}
     className={`a-input ${modifier}`}
     style={styles}
   />

@@ -5,7 +5,7 @@ import Column from '../../molecules/column/column';
 export default () => (
   <div className="o-authFooter">
     <Column
-      iteratorKey="foot"
+      iteratorKey="authFooter"
       list={[
         <TextButton to="/terms" modifier="theme-gray size-m">利用規約</TextButton>,
         <TextButton to="/privacy" modifier="theme-gray size-m">プライバシー</TextButton>,
