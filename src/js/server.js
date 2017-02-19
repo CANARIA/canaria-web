@@ -5,8 +5,10 @@ import compression from 'compression';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
+import { Provider } from 'react-redux';
 
-import { routes, configureStore, withReduxProvider } from './universal';
+import routes from './routes';
+import configureStore from './store/configureStore';
 import htmlTemplate from './index.html';
 
 const PORT = process.env.PORT || 3000;
@@ -40,7 +42,11 @@ function handleRender(req, res) {
 
     return Promise.all(promises)
     .then(() => {
-      const serverApp = withReduxProvider(store, <RouterContext {...renderProps} />);
+      const serverApp = (
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      );
       const html = renderToString(serverApp);
       const initialState = store.getState();
 

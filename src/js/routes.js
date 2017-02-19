@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './components/app';
-import SignUpContainer from './container/signUpContainer';
-import LoginContainer from './container/loginContainer';
+import SignUpContainer from './containers/signUpContainer';
+import LoginContainer from './containers/loginContainer';
 import Top from './components/pages/top/top';
 import User from './components/pages/user/user';
 import NotFound from './components/pages/notFound/notFound';

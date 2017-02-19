@@ -1,14 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
 
-import { routes, configureStore, withReduxProvider } from './universal';
+import routes from './routes';
+import configureStore from './store/configureStore';
 
 const initialState = window.__PRELOADED_STATE__ || {};
 const store = configureStore(initialState);
-const clientApp = withReduxProvider(store, <Router history={browserHistory}>{routes}</Router>);
+const clientApp = (
+  <Provider store={store}>
+    <Router history={browserHistory}>{routes}</Router>
+  </Provider>
+);
 
 render(
   clientApp,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

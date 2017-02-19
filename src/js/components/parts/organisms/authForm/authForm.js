@@ -7,6 +7,7 @@ const AuthForm = ({
   title,
   fieldList,
   submitText,
+  message,
   onSubmit,
   children
 }) => {
@@ -20,6 +21,10 @@ const AuthForm = ({
 
       {list.length &&
         <ul className="o-authForm__body">{list}</ul>
+      }
+
+      {message &&
+        <p className="o-authForm__message">{message}</p>
       }
 
       <Button modifier="theme-primary size-wide size-m">{submitText}</Button>

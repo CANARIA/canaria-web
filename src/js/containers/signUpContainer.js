@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SignUpUseCaseFactory } from '../usecase/signUpUsecase';
+import { SignUpUseCaseFactory } from '../usecases/signUpUsecase';
 import SignUp from '../components/pages/signUp/signUp';
 
 class SignUpContainer extends React.Component {
@@ -15,17 +15,23 @@ class SignUpContainer extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault();
 
-    console.log('handleSubmitForm');
-    SignUpUseCaseFactory.create().execute(e);
+    const mailaddress = e.target.mailaddress.value.trim();
+
+    if (mailaddress) {
+      SignUpUseCaseFactory.create().execute(this.props.dispatch, mailaddress);
+    }
   }
 
   render() {
     return (
       <SignUp
+        request={this.props.signUp}
         handleSubmitForm={this.handleSubmitForm}
       />
     );
   }
 }
 
-export default connect()(SignUpContainer);
+export default connect(state => ({
+  signUp: state.signUp
+}))(SignUpContainer);

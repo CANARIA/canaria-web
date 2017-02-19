@@ -8,3 +8,7 @@
 }
 .o-authForm__body { margin-bottom: 20px; }
 .o-authForm__body > li:not(:first-child) { margin-top: 15px; }
+.o-authForm__message {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}

@@ -1,6 +1,10 @@
-function reducer(state = {}, action) {
-  console.log(action);
-  return state;
-}
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
+import signUp from './signUp';
 
-export default reducer;
+const rootReducer = combineReducers({
+  routing: routerReducer,
+  signUp
+});
+
+export default rootReducer;

@@ -4,6 +4,7 @@ import AuthFooter from '../../parts/organisms/authFooter/authFooter';
 import AuthForm from '../../parts/organisms/authForm/authForm';
 
 const SignUp = ({
+  request,
   handleSubmitForm
 }) => (
   <div className="p-auth">
@@ -14,7 +15,7 @@ const SignUp = ({
     <div className="p-auth-main">
       <AuthForm
         title="新規登録"
-        submitText="送信"
+        submitText={request.isFetching ? '送信中...' : '送信'}
         fieldList={[{
           error: '',
           name: 'mailaddress',
@@ -24,6 +25,7 @@ const SignUp = ({
             required: true
           }
         }]}
+        message={request.message}
         onSubmit={handleSubmitForm}
       />
     </div>
