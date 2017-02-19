@@ -7,7 +7,7 @@ export class AuthRepositoryService {
   sendMail(mailaddress) {
     return new Promise((resolve, reject) => {
       httpClientGateway.post(`${AUTH_ENDPOINT}/preregister`, { mailaddress })
-      .then(() => resolve('メールを送信しました。'))
+      .then(() => resolve())
       .catch(err => reject(err));
     });
   }

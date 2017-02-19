@@ -7,7 +7,6 @@ const AuthForm = ({
   title,
   fieldList,
   submitText,
-  message,
   onSubmit,
   children
 }) => {
@@ -15,16 +14,12 @@ const AuthForm = ({
 
   return (
     <form className="o-authForm" onSubmit={onSubmit}>
-      <div className="o-authForm__title">
+      <div className="o-authForm-title">
         <Title modifier="theme-gray size-m">{title}</Title>
       </div>
 
       {list.length &&
-        <ul className="o-authForm__body">{list}</ul>
-      }
-
-      {message &&
-        <p className="o-authForm__message">{message}</p>
+        <ul className="o-authForm-body">{list}</ul>
       }
 
       <Button modifier="theme-primary size-wide size-m">{submitText}</Button>

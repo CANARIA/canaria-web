@@ -41,3 +41,4 @@
 @import "./components/organisms/authHeader";
 @import "./components/organisms/authForm";
 @import "./components/organisms/authFooter";
+@import "./components/organisms/dialog";

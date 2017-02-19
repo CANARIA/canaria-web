@@ -4,6 +4,7 @@ import {
   signUpSuccess,
   signUpFailure
 } from '../actions/auth';
+import dialog from '../components/modules/dialog';
 
 export class SignUpUsecase {
   constructor({ authRepositoryService }) {
@@ -14,7 +15,11 @@ export class SignUpUsecase {
     dispatch(signUpRequest(mailaddress));
 
     this.authRepositoryService.sendMail(mailaddress)
-    .then(message => dispatch(signUpSuccess(message)))
+    .then(() => {
+      dispatch(signUpSuccess());
+      return dialog('メールを送信しました。', { accept: '確認' });
+    })
+    .then(isAccept => console.log(isAccept))
     .catch(err => dispatch(signUpFailure(err)));
   }
 }

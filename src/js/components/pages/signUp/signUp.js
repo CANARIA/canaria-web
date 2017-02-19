@@ -22,10 +22,9 @@ const SignUp = ({
           input: {
             type: 'email',
             placeholder: 'メールアドレスを入力',
-            required: true
+            required: true,
           }
         }]}
-        message={request.message}
         onSubmit={handleSubmitForm}
       />
     </div>
