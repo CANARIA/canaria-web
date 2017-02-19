@@ -24,11 +24,7 @@ export class HttpClientGateway {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then(json => {
-        console.log('httpClientGateway');
-        console.log(json);
-        resolve('メールを送信しました。');
-      })
+      .then(() => resolve('メールを送信しました。'))
       .catch(err => reject(err));
     });
   }

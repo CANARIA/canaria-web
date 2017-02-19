@@ -4,7 +4,7 @@ import Login from '../components/pages/login/login';
 export default class LoginContainer extends React.Component {
 
   componentDidMount() {
-    console.log('hoge');
+    window.console.log('hoge');
   }
 
   render() {
