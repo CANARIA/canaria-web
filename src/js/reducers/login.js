@@ -7,16 +7,16 @@ const initialState = {
 };
 
 export default handleActions({
-  [Auth.SIGN_UP_REQUEST]: state => Object.assign({}, state, {
+  [Auth.LOGIN_REQUEST]: state => Object.assign({}, state, {
     isFetching: true,
     error: ''
   }),
 
-  [Auth.SIGN_UP_SUCCESS]: state => Object.assign({}, state, {
+  [Auth.LOGIN_SUCCESS]: state => Object.assign({}, state, {
     isFetching: false
   }),
 
-  [Auth.SIGN_UP_FAILURE]: (state, { payload }) => Object.assign({}, state, {
+  [Auth.LOGIN_FAILURE]: (state, { payload }) => Object.assign({}, state, {
     isFetching: false,
     error: payload
   })

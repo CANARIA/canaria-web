@@ -12,7 +12,7 @@ export class SignUpUsecase {
   }
 
   execute(dispatch, mailaddress) {
-    dispatch(signUpRequest(mailaddress));
+    dispatch(signUpRequest());
 
     this.authRepositoryService.sendMail(mailaddress)
     .then(() => {

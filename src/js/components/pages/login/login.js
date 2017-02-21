@@ -6,9 +6,10 @@ import Title from '../../parts/title/title';
 import Field from '../../parts/field/field';
 import Column from '../../parts/column/column';
 import Box from '../../parts/box/box';
+import Error from '../../parts/error/error';
 
 const Login = ({
-  request,
+  auth,
   handleSubmitForm
 }) => (
   <div className="p-auth">
@@ -30,27 +31,25 @@ const Login = ({
     <Box modifier="theme-clearwhite size-m">
       <form className="p-auth-form" onSubmit={handleSubmitForm}>
         <div className="p-auth-form__title">
-          <Title modifier="theme-gray size-m">新規登録</Title>
+          <Title modifier="theme-gray size-m">ログイン</Title>
         </div>
 
         <ul className="p-auth-form__list">
           <li>
             <Field
-              error={request.error}
-              name="mailaddress"
-              label="メールアドレス"
+              label="ユーザー名"
+              name="user_name"
               input={{
-                type: 'email',
-                placeholder: 'メールアドレスを入力',
+                type: 'text',
+                placeholder: 'ユーザー名を入力',
                 required: true,
               }}
             />
           </li>
           <li>
             <Field
-              error={request.error}
-              name="password"
               label="パスワード"
+              name="password"
               input={{
                 type: 'password',
                 placeholder: 'パスワードを入力',
@@ -60,7 +59,13 @@ const Login = ({
           </li>
         </ul>
 
-        <Button modifier="theme-primary size-wide size-m">{request.isFetching ? 'ログイン中...' : 'ログイン'}</Button>
+        {auth.error &&
+          <div className="p-auth-form__error">
+            <Error modifier="size-m">{auth.error}</Error>
+          </div>
+        }
+
+        <Button modifier="theme-primary size-wide size-m" disabled={auth.isFetching}>{auth.isFetching ? '送信中...' : 'ログイン'}</Button>
       </form>
     </Box>
 

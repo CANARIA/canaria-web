@@ -6,9 +6,10 @@ import Title from '../../parts/title/title';
 import Field from '../../parts/field/field';
 import Column from '../../parts/column/column';
 import Box from '../../parts/box/box';
+import Error from '../../parts/error/error';
 
 const SignUp = ({
-  request,
+  auth,
   handleSubmitForm
 }) => (
   <div className="p-auth">
@@ -36,7 +37,6 @@ const SignUp = ({
         <ul className="p-auth-form__list">
           <li>
             <Field
-              error={request.error}
               name="mailaddress"
               input={{
                 type: 'email',
@@ -47,7 +47,13 @@ const SignUp = ({
           </li>
         </ul>
 
-        <Button modifier="theme-primary size-wide size-m">{request.isFetching ? '送信中...' : '送信'}</Button>
+        {auth.error &&
+          <div className="p-auth-form__error">
+            <Error modifier="size-m">{auth.error}</Error>
+          </div>
+        }
+
+        <Button modifier="theme-primary size-wide size-m" disabled={auth.isFetching}>{auth.isFetching ? '送信中...' : '送信'}</Button>
       </form>
     </Box>
 

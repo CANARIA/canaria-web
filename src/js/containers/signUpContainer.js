@@ -15,10 +15,6 @@ class SignUpContainer extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault();
 
-    if (this.props.signUp.isFetching) {
-      return;
-    }
-
     const mailaddress = e.target.mailaddress.value.trim();
 
     if (mailaddress) {
@@ -29,7 +25,7 @@ class SignUpContainer extends React.Component {
   render() {
     return (
       <SignUp
-        request={this.props.signUp}
+        auth={this.props.auth}
         handleSubmitForm={this.handleSubmitForm}
       />
     );
@@ -37,5 +33,5 @@ class SignUpContainer extends React.Component {
 }
 
 export default connect(state => ({
-  signUp: state.signUp
+  auth: state.signUp
 }))(SignUpContainer);

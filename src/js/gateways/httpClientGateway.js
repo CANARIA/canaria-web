@@ -8,22 +8,26 @@ export function timeout(promise) {
   });
 }
 
+export function createError(response) {
+  const error = new Error(response.statusText);
+  error.response = response;
+  return error;
+}
+
 export function handleErrors(response) {
   if (!response.ok) {
-    throw new Error(response.statusText);
+    throw createError(response);
   }
 
   return response;
 }
 
 export function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
+  if (response.status < 200 || response.status >= 300) {
+    createError(response);
   }
 
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
+  return response;
 }
 
 export function parseJSON(response) {
@@ -46,8 +50,9 @@ export class HttpClientGateway {
         if (err.message === 'Failed to fetch') {
           reject({ message: ERROR.CONNECTION });
         }
-        reject(err);
-      });
+        return parseJSON(err.response);
+      })
+      .then(json => reject(json));
     });
   }
 }

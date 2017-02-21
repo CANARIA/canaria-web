@@ -1,9 +1,10 @@
 import authRepositoryService from '../services/authRepositoryService';
 import {
-  signUpRequest,
-  signUpSuccess,
-  signUpFailure
+  registerRequest,
+  registerSuccess,
+  registerFailure
 } from '../actions/auth';
+import { ERROR } from '../constants/application';
 import dialog from '../components/modules/dialog';
 
 export class RegisterUsecase {
@@ -11,17 +12,24 @@ export class RegisterUsecase {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(dispatch, register_token) {
-    console.log('registerUsecase');
-    console.log({ register_token });
-    // dispatch(signUpRequest(mailaddress));
+  execute(push, dispatch, { userName, password, passwordConfirm, registerToken }) {
+    if (password !== passwordConfirm) {
+      return dispatch(registerFailure(ERROR.PASSWORD_CONFIRM));
+    }
 
-    // this.authRepositoryService.sendMail(mailaddress)
-    // .then(() => {
-    //   dispatch(signUpSuccess());
-    //   return dialog('メールを送信しました。', { accept: '確認' });
-    // })
-    // .catch(err => dispatch(signUpFailure(err)));
+    dispatch(registerRequest());
+
+    return this.authRepositoryService.register({
+      password,
+      user_name: userName,
+      url_token: registerToken
+    })
+    .then(() => {
+      dispatch(registerSuccess());
+      return dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' });
+    })
+    .then(() => push('/login'))
+    .catch(err => dispatch(registerFailure(err.message)));
   }
 }
 

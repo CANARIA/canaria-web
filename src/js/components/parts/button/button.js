@@ -6,11 +6,12 @@ const Button = ({
   onClick,
   to,
   href,
+  disabled = false,
   modifier = '',
   styles = {}
 }) => {
   if (onClick) {
-    return <button onClick={onClick} className={`a-button ${modifier}`} style={styles}>{children}</button>;
+    return <button onClick={onClick} className={`a-button ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
   }
 
   if (to) {
@@ -21,7 +22,7 @@ const Button = ({
     return <a href={href} className={`a-button ${modifier}`} style={styles}>{children}</a>;
   }
 
-  return <button className={`a-button ${modifier}`} style={styles}>{children}</button>;
+  return <button className={`a-button ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
 };
 
 export default Button;

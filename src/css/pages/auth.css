@@ -31,4 +31,5 @@
 }
 .p-auth-form__list { margin-bottom: 20px; }
 .p-auth-form__list > li:not(:first-child) { margin-top: 15px; }
+.p-auth-form__error { margin-bottom: 20px; }
 
