@@ -24,7 +24,7 @@ export class HttpClientGateway {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then(() => resolve('メールを送信しました。'))
+      .then(json => resolve('メールを送信しました。'))
       .catch(err => reject(err));
     });
   }

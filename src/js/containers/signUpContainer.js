@@ -15,6 +15,10 @@ class SignUpContainer extends React.Component {
   handleSubmitForm(e) {
     e.preventDefault();
 
+    if (this.props.signUp.isFetching) {
+      return;
+    }
+
     const mailaddress = e.target.mailaddress.value.trim();
 
     if (mailaddress) {

@@ -35,10 +35,8 @@
 
 @import "./components/molecules/column";
 @import "./components/molecules/field";
+@import "./components/molecules/box";
 
 /* organisms */
 
-@import "./components/organisms/authHeader";
-@import "./components/organisms/authForm";
-@import "./components/organisms/authFooter";
 @import "./components/organisms/dialog";

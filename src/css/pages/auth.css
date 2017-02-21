@@ -6,24 +6,29 @@
   background: no-repeat url(http://68.media.tumblr.com/738b981e038fdb3633b81934d8ad4504/tumblr_ollvmdw3vX1u1unrlo1_1280.jpg) center center #ddd;
   background-size: cover;
 }
-.p-auth-head {
+.p-auth-label {
   position: fixed;
-  top: 0;
   left: 0;
-  width: 100%;
-}
-.p-auth-nav {
   display: flex;
   align-items: center;
-}
-.p-auth-main {
-  border-radius: 3px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
   background-color: rgba(255, 255, 255, .95);
 }
-.p-auth-foot {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
+.p-auth-label.is-head {
+  justify-content: space-between;
+  top: 0;
 }
+.p-auth-label.is-foot {
+  justify-content: center;
+  bottom: 0;
+}
+.p-auth-form { width: 260px; }
+.p-auth-form__title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.p-auth-form__list { margin-bottom: 20px; }
+.p-auth-form__list > li:not(:first-child) { margin-top: 15px; }
+

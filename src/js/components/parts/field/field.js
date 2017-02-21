@@ -1,6 +1,6 @@
 import React from 'react';
-import Label from '../../atoms/label/label';
-import Input from '../../atoms/input/input';
+import Label from '../label/label';
+import Input from '../input/input';
 
 const Field = ({
   error,

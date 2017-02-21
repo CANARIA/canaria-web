@@ -18,9 +18,12 @@
 /* theme */
 
 .a-button.theme-primary,
-.a-button.theme-secondary { color: var(--color-white); }
+.a-button.theme-secondary,
+.a-button.theme-cancel { color: var(--color-white); }
+
 .a-button.theme-primary { background-color: var(--color-primary); }
 .a-button.theme-secondary { background-color: var(--color-secondary); }
+.a-button.theme-cancel { background-color: var(--color-cancel); }
 
 /* size */
 
@@ -28,4 +31,8 @@
 .a-button.size-m {
   font-size: 1.4rem;
   padding: 10px;
+}
+.a-button.size-s {
+  font-size: 1.2rem;
+  padding: 8px 10px;
 }

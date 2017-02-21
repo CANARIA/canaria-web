@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Dialog from '../../parts/organisms/dialog/dialog';
+import Dialog from '../../parts/dialog/dialog';
 
 export default (message, { accept, cancel }) => new Promise((resolve) => {
   render(

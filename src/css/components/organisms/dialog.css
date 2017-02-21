@@ -9,8 +9,9 @@
   align-items: center;
   background-color: rgba(0, 0, 0, .5);
 }
-.a-dialog-inner {
-  border-radius: 3px;
-  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
-  background-color: var(--color-white);
+.a-dialog-body { margin-bottom: 20px; }
+.a-dialog-text {
+  font-size: 1.4rem;
+  line-height: 1.4;
 }
+.a-dialog-bottom { text-align: right; }

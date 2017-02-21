@@ -19,7 +19,6 @@ export class SignUpUsecase {
       dispatch(signUpSuccess());
       return dialog('メールを送信しました。', { accept: '確認' });
     })
-    .then(isAccept => console.log(isAccept))
     .catch(err => dispatch(signUpFailure(err)));
   }
 }

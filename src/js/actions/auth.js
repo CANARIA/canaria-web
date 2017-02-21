@@ -12,3 +12,18 @@ export const signUpSuccess = () => (
 export const signUpFailure = err => (
   { type: SIGN_UP_FAILURE, payload: err }
 );
+
+// Register
+export const RGISTER_REQUEST = 'RGISTER_REQUEST';
+export const RGISTER_SUCCESS = 'RGISTER_SUCCESS';
+export const RGISTER_FAILURE = 'RGISTER_FAILURE';
+
+export const registerRequest = mailaddress => (
+  { type: RGISTER_REQUEST, payload: mailaddress }
+);
+export const registerSuccess = () => (
+  { type: RGISTER_SUCCESS }
+);
+export const registerFailure = err => (
+  { type: RGISTER_FAILURE, payload: err }
+);
