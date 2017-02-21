@@ -19,7 +19,7 @@ export class SignUpUsecase {
       dispatch(signUpSuccess());
       return dialog('メールを送信しました。', { accept: '確認' });
     })
-    .catch(err => dispatch(signUpFailure(err)));
+    .catch(err => dispatch(signUpFailure(err.message)));
   }
 }
 

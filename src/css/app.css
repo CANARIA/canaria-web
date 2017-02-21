@@ -30,6 +30,7 @@
 @import "./components/atoms/textButton";
 @import "./components/atoms/title";
 @import "./components/atoms/label";
+@import "./components/atoms/error";
 
 /* molecules */
 
