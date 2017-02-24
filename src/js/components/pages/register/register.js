@@ -30,10 +30,12 @@ const Register = ({
 
     {auth.tokenError ?
       <Box modifier="theme-clearwhite size-m">
-        <div className="p-auth-form__title">
-          <Title modifier="theme-gray size-m">エラー</Title>
+        <div className="p-auth-form">
+          <div className="p-auth-form__title">
+            <Title modifier="theme-gray size-m">エラー</Title>
+          </div>
+          <Error modifier="size-m">{auth.tokenError}</Error>
         </div>
-        <Error modifier="size-m">{auth.tokenError}</Error>
       </Box>
     :
       <Box modifier="theme-clearwhite size-m">

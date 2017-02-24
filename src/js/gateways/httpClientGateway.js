@@ -35,11 +35,11 @@ export function parseJSON(response) {
 }
 
 export class HttpClientGateway {
-  post(uri, data) {
+  post(uri, data, headers = {}) {
     return new Promise((resolve, reject) => {
       timeout(libFetch(uri, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: Object.assign(headers, { 'Content-Type': 'application/json' }),
         body: JSON.stringify(data)
       }))
       .then(handleErrors)

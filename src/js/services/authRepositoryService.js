@@ -1,3 +1,4 @@
+import uuid from 'node-uuid';
 import { API_ROOT } from '../constants/application';
 import httpClientGateway from '../gateways/httpClientGateway';
 
@@ -29,8 +30,9 @@ export class AuthRepositoryService {
   }
 
   login(userData) {
+    const access_token = uuid.v4();
     return new Promise((resolve, reject) => {
-      httpClientGateway.post(`${AUTH_ENDPOINT}/login`, userData)
+      httpClientGateway.post(`${AUTH_ENDPOINT}/login`, userData, { access_token })
       .then(json => resolve(json))
       .catch(err => reject(err));
     });
