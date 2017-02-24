@@ -7,22 +7,23 @@ const Button = ({
   to,
   href,
   disabled = false,
+  hover = '',
   modifier = '',
   styles = {}
 }) => {
   if (onClick) {
-    return <button onClick={onClick} className={`a-button ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
+    return <button onClick={onClick} className={`a-button ${hover} ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
   }
 
   if (to) {
-    return <Link to={to} className={`a-button ${modifier}`} style={styles}>{children}</Link>;
+    return <Link to={to} className={`a-button ${hover} ${modifier}`} style={styles}>{children}</Link>;
   }
 
   if (href) {
-    return <a href={href} className={`a-button ${modifier}`} style={styles}>{children}</a>;
+    return <a href={href} className={`a-button ${hover} ${modifier}`} style={styles}>{children}</a>;
   }
 
-  return <button className={`a-button ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
+  return <button className={`a-button ${hover} ${modifier}`} disabled={disabled} style={styles}>{children}</button>;
 };
 
 export default Button;

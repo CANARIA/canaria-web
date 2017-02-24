@@ -13,8 +13,8 @@ const Login = ({
   handleSubmitForm
 }) => (
   <div className="p-auth">
-    <div className="p-auth-label is-head">
-      <Button to="/"><Icon name="logo" /></Button>
+    <header className="p-auth-label is-head">
+      <Button to="/" hover="opacity"><Icon name="logo2" /></Button>
 
       <Column
         iteratorKey="authHead"
@@ -22,11 +22,11 @@ const Login = ({
           <TextButton to="/ranking" modifier="theme-gray size-m">ランキング</TextButton>,
           <TextButton to="/new" modifier="theme-gray size-m">新着</TextButton>,
           <TextButton to="/tag" modifier="theme-gray size-m">タグ</TextButton>,
-          <Button to="/signup" modifier="theme-secondary size-m">新規登録</Button>
+          <Button to="/signup" hover="filter" modifier="theme-secondary size-m">新規登録</Button>
         ]}
         modifier="size-m"
       />
-    </div>
+    </header>
 
     <Box modifier="theme-clearwhite size-m">
       <form className="p-auth-form" onSubmit={handleSubmitForm}>
@@ -65,11 +65,11 @@ const Login = ({
           </div>
         }
 
-        <Button modifier="theme-primary size-wide size-m" disabled={auth.isFetching}>{auth.isFetching ? '送信中...' : 'ログイン'}</Button>
+        <Button hover="filter" modifier="theme-secondary size-wide size-m" disabled={auth.isFetching}>{auth.isFetching ? '送信中...' : 'ログイン'}</Button>
       </form>
     </Box>
 
-    <div className="p-auth-label is-foot">
+    <footer className="p-auth-label is-foot">
       <Column
         iteratorKey="authFoot"
         list={[
@@ -80,7 +80,7 @@ const Login = ({
         ]}
         modifier="size-m"
       />
-    </div>
+    </footer>
   </div>
 );
 

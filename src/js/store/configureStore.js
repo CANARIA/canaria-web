@@ -6,7 +6,7 @@ export default function configureStore(initialState) {
   const logger = createLogger();
   let middlewares = null;
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production' && typeof window !== 'undefined') {
     middlewares = applyMiddleware(
       logger
     );

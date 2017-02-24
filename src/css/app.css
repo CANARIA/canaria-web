@@ -17,6 +17,7 @@
 //-------------------------------------*/
 
 @import "./pages/auth";
+@import "./pages/home";
 
 /*-------------------------------------//
 //  Components
@@ -40,4 +41,5 @@
 
 /* organisms */
 
+@import "./components/organisms/header";
 @import "./components/organisms/dialog";

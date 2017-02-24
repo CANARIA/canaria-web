@@ -12,7 +12,7 @@ const Field = ({
       <p className="m-field-label"><Label name={name} modifier="theme-gray size-m">{label}</Label></p>
     }
 
-    <Input name={name} type={input.type} placeholder={input.placeholder} required={input.required} modifier="theme-primary size-m size-wide" />
+    <Input name={name} type={input.type} placeholder={input.placeholder} required={input.required} modifier="theme-secondary size-m size-wide" />
   </div>
 );
 

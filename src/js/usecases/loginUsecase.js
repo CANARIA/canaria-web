@@ -14,7 +14,8 @@ export class LoginUsecase {
     dispatch(loginRequest());
 
     return this.authRepositoryService.login({ user_name: userName, password })
-    .then(() => {
+    .then(data => {
+      console.log(data);
       dispatch(loginSuccess());
     })
     .catch(err => dispatch(loginFailure(err.message)));

@@ -1,0 +1,9 @@
+.o-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--color-light-gray);
+  background-color: var(--color-white);
+}

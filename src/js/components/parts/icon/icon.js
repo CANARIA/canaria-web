@@ -5,10 +5,9 @@ const Icon = ({
   name = '',
   modifier = '',
   styles = {}
-}) => (
-  <i className={`a-icon ${modifier}`} style={styles}>
-    {icons[name]}
-  </i>
-);
+}) => {
+  const SvgIcon = icons[name];
+  return <i className={`a-icon ${name} ${modifier}`} style={styles}><SvgIcon /></i>;
+};
 
 export default Icon;

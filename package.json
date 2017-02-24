@@ -19,8 +19,8 @@
     "dev": "npm-run-all -p watch dev:server",
     "lint": "eslint ./src/js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "nabeliwo",
+  "license": "MIT",
   "dependencies": {
     "compression": "^1.6.2",
     "express": "^4.14.0",

@@ -2,13 +2,13 @@
 //  Commmon
 //-------------------------------------*/
 
-.a-icon { display: inline-block; }
-
-/*消す*/
-.a-icon {
-  width: 100px;
-  height: 39px;
+.a-icon { display: block; }
+.a-icon > svg {
+  width: 100%;
+  height: auto;
 }
+
+.a-icon.logo2 { width: 100px; }
 
 /*-------------------------------------//
 //  Modifier

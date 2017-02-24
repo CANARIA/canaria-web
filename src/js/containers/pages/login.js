@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { LoginUseCaseFactory } from '../usecases/loginUsecase';
-import Login from '../components/pages/login/login';
+import { LoginUseCaseFactory } from '../../usecases/loginUsecase';
+import LoginComponent from '../../components/pages/login/login';
 
 class LoginContainer extends React.Component {
 
@@ -26,7 +26,7 @@ class LoginContainer extends React.Component {
 
   render() {
     return (
-      <Login
+      <LoginComponent
         auth={this.props.auth}
         handleSubmitForm={this.handleSubmitForm}
       />

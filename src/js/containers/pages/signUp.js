@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { SignUpUseCaseFactory } from '../usecases/signUpUsecase';
-import SignUp from '../components/pages/signUp/signUp';
+import { SignUpUseCaseFactory } from '../../usecases/signUpUsecase';
+import SignUpComponent from '../../components/pages/signUp/signUp';
 
 class SignUpContainer extends React.Component {
 
@@ -24,7 +24,7 @@ class SignUpContainer extends React.Component {
 
   render() {
     return (
-      <SignUp
+      <SignUpComponent
         auth={this.props.auth}
         handleSubmitForm={this.handleSubmitForm}
       />

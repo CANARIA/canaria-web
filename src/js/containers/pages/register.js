@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { CheckRegisterTokenUseCaseFactory } from '../usecases/checkRegisterTokenUsecase';
-import { RegisterUseCaseFactory } from '../usecases/registerUsecase';
-import Register from '../components/pages/register/register';
+import { CheckRegisterTokenUseCaseFactory } from '../../usecases/checkRegisterTokenUsecase';
+import { RegisterUseCaseFactory } from '../../usecases/registerUsecase';
+import RegisterComponent from '../../components/pages/register/register';
 
 class RegisterContainer extends React.Component {
 
@@ -18,6 +18,8 @@ class RegisterContainer extends React.Component {
 
     if (register_token) {
       CheckRegisterTokenUseCaseFactory.create().execute(this.props.dispatch, register_token);
+    } else {
+      this.props.router.replace('/');
     }
   }
 
@@ -50,7 +52,7 @@ class RegisterContainer extends React.Component {
     }
 
     return (
-      <Register
+      <RegisterComponent
         auth={auth}
         handleSubmitForm={this.handleSubmitForm}
       />

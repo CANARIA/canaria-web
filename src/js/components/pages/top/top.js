@@ -1,9 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router';
+
+import Header from '../../../containers/parts/header/header';
 
 export default () => (
-  <div>
-    <h1>Hello, world!</h1>
-    <Link to="/user">user</Link>
+  <div className="p-home">
+    <div className="p-home-header">
+      <Header />
+    </div>
+
+    <nav className="p-home-nav">
+      nav
+    </nav>
+
+    <aside className="p-home-aside">
+      aside
+    </aside>
+
+    <div className="p-home-container">
+      <main className="p-home-main">
+        main
+      </main>
+
+      <footer className="p-home-footer">
+        footer
+      </footer>
+    </div>
   </div>
 );
