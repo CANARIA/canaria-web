@@ -18,7 +18,7 @@ export class LoginUsecase {
       console.log(data);
       dispatch(loginSuccess());
     })
-    .catch(err => dispatch(loginFailure(err.message)));
+    .catch(err => dispatch(loginFailure(err)));
   }
 }
 

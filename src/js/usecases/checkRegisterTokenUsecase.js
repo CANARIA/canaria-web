@@ -12,7 +12,7 @@ export class CheckRegisterTokenUsecase {
   execute(dispatch, register_token) {
     this.authRepositoryService.checkRegisterToken(register_token)
     .then(() => dispatch(registerTokenValid()))
-    .catch(err => dispatch(registerTokenInvalid(err.message)));
+    .catch(err => dispatch(registerTokenInvalid(err)));
   }
 }
 

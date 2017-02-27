@@ -29,7 +29,7 @@ export class RegisterUsecase {
       return dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' });
     })
     .then(() => push('/login'))
-    .catch(err => dispatch(registerFailure(err.message)));
+    .catch(err => dispatch(registerFailure(err)));
   }
 }
 
