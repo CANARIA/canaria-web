@@ -24,11 +24,11 @@ export class RegisterUsecase {
       user_name: userName,
       url_token: registerToken
     })
+    .then(() => dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' }))
     .then(() => {
       dispatch(registerSuccess());
-      return dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' });
+      push('/login');
     })
-    .then(() => push('/login'))
     .catch(err => dispatch(registerFailure(err)));
   }
 }

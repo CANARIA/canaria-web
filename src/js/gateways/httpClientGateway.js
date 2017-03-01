@@ -11,9 +11,8 @@ export class HttpClientGateway {
         headers: Object.assign(headers, { 'Content-Type': 'application/json' }),
         timeout: TIMEOUT
       })
-      .then(res => resolve(res))
+      .then(({ headers, data }) => resolve({ headers, data }))
       .catch((err) => {
-        console.log(err.response);
         if (!err.response) {
           return reject(ERROR.CONNECTION);
         }

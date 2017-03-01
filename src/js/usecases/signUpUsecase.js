@@ -15,10 +15,8 @@ export class SignUpUsecase {
     dispatch(signUpRequest());
 
     this.authRepositoryService.sendMail(mailaddress)
-    .then(() => {
-      dispatch(signUpSuccess());
-      return dialog('メールを送信しました。', { accept: '閉じる' });
-    })
+    .then(() => dialog('メールを送信しました。', { accept: '閉じる' }))
+    .then(() => dispatch(signUpSuccess()))
     .catch(err => dispatch(signUpFailure(err)));
   }
 }

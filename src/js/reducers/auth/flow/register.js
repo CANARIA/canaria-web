@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions';
-import * as Auth from '../actions/auth';
+import * as Auth from '../../../actions/auth';
 
 const initialState = {
-  tokenChecked: false,
+  isTokenChecked: false,
   tokenError: '',
   isFetching: false,
   registerError: ''
@@ -10,11 +10,11 @@ const initialState = {
 
 export default handleActions({
   [Auth.RGISTER_TOKEN_VALID]: state => Object.assign({}, state, {
-    tokenChecked: true
+    isTokenChecked: true
   }),
 
   [Auth.RGISTER_TOKEN_INVALID]: (state, { payload }) => Object.assign({}, state, {
-    tokenChecked: true,
+    isTokenChecked: true,
     tokenError: payload
   }),
 

@@ -1,11 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { initializeApp } from '../../actions/application';
 import { CheckRegisterTokenUseCaseFactory } from '../../usecases/checkRegisterTokenUsecase';
 import { RegisterUseCaseFactory } from '../../usecases/registerUsecase';
 import RegisterComponent from '../../components/pages/register/register';
 
+const _checkRegisterToken = (props, dispatch) => {
+  const { register_token } = props.location.query;
+
+  if (register_token) {
+    CheckRegisterTokenUseCaseFactory.create().execute(dispatch, register_token);
+  } else {
+    props.router.replace('/');
+  }
+};
+
 class RegisterContainer extends React.Component {
+
+  static fetchData(renderProps, dispatch) {
+    _checkRegisterToken(renderProps, dispatch);
+    return dispatch(initializeApp());
+  }
 
   constructor(props) {
     super(props);
@@ -14,12 +30,10 @@ class RegisterContainer extends React.Component {
   }
 
   componentWillMount() {
-    const { register_token } = this.props.location.query;
+    const { application, dispatch } = this.props;
 
-    if (register_token) {
-      CheckRegisterTokenUseCaseFactory.create().execute(this.props.dispatch, register_token);
-    } else {
-      this.props.router.replace('/');
+    if (!application.isInitialized) {
+      _checkRegisterToken(this.props, dispatch);
     }
   }
 
@@ -47,7 +61,7 @@ class RegisterContainer extends React.Component {
   render() {
     const { auth } = this.props;
 
-    if (!auth.tokenChecked) {
+    if (!auth.isTokenChecked) {
       return null;
     }
 
@@ -61,5 +75,6 @@ class RegisterContainer extends React.Component {
 }
 
 export default connect(state => ({
-  auth: state.register
+  application: state.application,
+  auth: state.auth.flow.register
 }))(RegisterContainer);

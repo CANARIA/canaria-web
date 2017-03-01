@@ -33,5 +33,5 @@ class SignUpContainer extends React.Component {
 }
 
 export default connect(state => ({
-  auth: state.signUp
+  auth: state.auth.flow.signUp
 }))(SignUpContainer);

@@ -3,14 +3,14 @@ import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 
-import routes from './routes';
+import getRoutes from './routes';
 import configureStore from './store/configureStore';
 
-const initialState = window.__PRELOADED_STATE__ || {};
+const initialState = JSON.parse(document.getElementById('initial-state').getAttribute('data-json'));
 const store = configureStore(initialState);
 const clientApp = (
   <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
+    <Router history={browserHistory}>{getRoutes(store)}</Router>
   </Provider>
 );
 

@@ -44,8 +44,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const loginRequest = data => (
   { type: LOGIN_REQUEST, payload: data }
 );
-export const loginSuccess = () => (
-  { type: LOGIN_SUCCESS }
+export const loginSuccess = user => (
+  { type: LOGIN_SUCCESS, payload: user }
 );
 export const loginFailure = err => (
   { type: LOGIN_FAILURE, payload: err }

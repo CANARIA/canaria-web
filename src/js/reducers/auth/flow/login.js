@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import * as Auth from '../actions/auth';
+import * as Auth from '../../../actions/auth';
 
 const initialState = {
   isFetching: false,

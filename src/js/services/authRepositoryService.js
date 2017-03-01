@@ -16,7 +16,7 @@ export class AuthRepositoryService {
   checkRegisterToken(register_token) {
     return new Promise((resolve, reject) => {
       httpClientGateway.post(`${AUTH_ENDPOINT}/checktoken`, { url_token: register_token })
-      .then(json => resolve(json))
+      .then(() => resolve())
       .catch(err => reject(err));
     });
   }
@@ -24,7 +24,7 @@ export class AuthRepositoryService {
   register(userData) {
     return new Promise((resolve, reject) => {
       httpClientGateway.post(`${AUTH_ENDPOINT}/register`, userData)
-      .then(json => resolve(json))
+      .then(() => resolve())
       .catch(err => reject(err));
     });
   }
@@ -33,7 +33,7 @@ export class AuthRepositoryService {
     const access_token = uuid.v4();
     return new Promise((resolve, reject) => {
       httpClientGateway.post(`${AUTH_ENDPOINT}/login`, userData, { access_token })
-      .then(json => resolve(json))
+      .then(data => resolve(data))
       .catch(err => reject(err));
     });
   }

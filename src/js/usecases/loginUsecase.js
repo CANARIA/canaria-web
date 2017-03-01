@@ -10,13 +10,13 @@ export class LoginUsecase {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(dispatch, { userName, password }) {
+  execute(push, dispatch, { userName, password }) {
     dispatch(loginRequest());
 
     return this.authRepositoryService.login({ user_name: userName, password })
-    .then(data => {
-      console.log(data);
-      dispatch(loginSuccess());
+    .then(({ data }) => {
+      dispatch(loginSuccess(data));
+      push('/');
     })
     .catch(err => dispatch(loginFailure(err)));
   }

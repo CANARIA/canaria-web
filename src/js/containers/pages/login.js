@@ -16,11 +16,12 @@ class LoginContainer extends React.Component {
     e.preventDefault();
 
     const target = e.target;
+    const { router, dispatch } = this.props;
     const userName = target.user_name.value.trim();
     const password = target.password.value.trim();
 
     if (userName && password) {
-      LoginUseCaseFactory.create().execute(this.props.dispatch, { userName, password });
+      LoginUseCaseFactory.create().execute(router.push, dispatch, { userName, password });
     }
   }
 
@@ -35,5 +36,5 @@ class LoginContainer extends React.Component {
 }
 
 export default connect(state => ({
-  auth: state.login
+  auth: state.auth.flow.login
 }))(LoginContainer);
