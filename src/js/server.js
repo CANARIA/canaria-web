@@ -57,6 +57,7 @@ const getTemplate = (renderProps) => {
 
 const handleRender = (req, res) => {
   let preFetchFlag = false;
+  let fetchNum = 0;
 
   match({ routes: getRoutes(store), location: req.url }, (err, redirect, renderProps) => {
     if (err) {
@@ -69,16 +70,16 @@ const handleRender = (req, res) => {
       return;
     }
 
-    renderProps.components
-    .filter(component => component && component.fetchData)
-    .forEach((component) => {
+    const components = renderProps.components.filter(component => component && component.fetchData);
+    components.forEach((component) => {
       preFetchFlag = true;
       component.fetchData(renderProps, store.dispatch);
     });
 
     if (preFetchFlag) {
+      fetchNum += 1;
       const unscribe = store.subscribe(() => {
-        if (store.getState().application.isInitialized || !preFetchFlag) {
+        if (fetchNum >= components.length) {
           res.send(getTemplate(renderProps));
           unscribe();
         }

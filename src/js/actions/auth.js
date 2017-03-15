@@ -40,6 +40,7 @@ export const registerFailure = err => (
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGIN_CHECK_FAILURE = 'LOGIN_CHECK_FAILURE';
 
 export const loginRequest = data => (
   { type: LOGIN_REQUEST, payload: data }

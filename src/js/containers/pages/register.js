@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { initializeApp } from '../../actions/application';
 import { CheckRegisterTokenUseCaseFactory } from '../../usecases/checkRegisterTokenUsecase';
 import { RegisterUseCaseFactory } from '../../usecases/registerUsecase';
 import RegisterComponent from '../../components/pages/register/register';
@@ -20,7 +19,6 @@ class RegisterContainer extends React.Component {
 
   static fetchData(renderProps, dispatch) {
     _checkRegisterToken(renderProps, dispatch);
-    return dispatch(initializeApp());
   }
 
   constructor(props) {
@@ -30,9 +28,9 @@ class RegisterContainer extends React.Component {
   }
 
   componentWillMount() {
-    const { application, dispatch } = this.props;
+    const { auth, dispatch } = this.props;
 
-    if (!application.isInitialized) {
+    if (!auth.isTokenChecked) {
       _checkRegisterToken(this.props, dispatch);
     }
   }
@@ -67,7 +65,7 @@ class RegisterContainer extends React.Component {
 
     return (
       <RegisterComponent
-        auth={auth}
+        auth={this.props.auth}
         handleSubmitForm={this.handleSubmitForm}
       />
     );
@@ -75,6 +73,5 @@ class RegisterContainer extends React.Component {
 }
 
 export default connect(state => ({
-  application: state.application,
   auth: state.auth.flow.register
 }))(RegisterContainer);
