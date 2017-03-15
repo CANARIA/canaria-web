@@ -1,8 +1,10 @@
 import path from 'path';
 import Express from 'express';
 import compression from 'compression';
+import cookieParser from 'cookie-parser';
 
 import React from 'react';
+import cookie from 'react-cookie';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import { Provider } from 'react-redux';
@@ -89,6 +91,11 @@ const handleRender = (req, res) => {
 
 app.use(compression());
 app.use(Express.static(path.join(__dirname, '../../dist')));
+app.use(cookieParser());
+app.use((req, res, next) => {
+  cookie.plugToRequest(req, res);
+  next();
+});
 app.use(handleRender);
 app.listen(PORT, () => {
   global.console.log(`Express server listening on ${PORT}`);

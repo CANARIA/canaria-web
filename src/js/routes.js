@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app';
+import App from './containers/app';
 import SignUp from './containers/pages/signUp';
 import Register from './containers/pages/register';
 import Login from './containers/pages/login';
+
 import Top from './components/pages/top/top';
 import NotFound from './components/pages/notFound/notFound';
 

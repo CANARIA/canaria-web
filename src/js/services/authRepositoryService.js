@@ -37,6 +37,14 @@ export class AuthRepositoryService {
       .catch(err => reject(err));
     });
   }
+
+  checkLoginToken(token) {
+    return new Promise((resolve, reject) => {
+      httpClientGateway.post(`${AUTH_ENDPOINT}/check`, {}, token)
+      .then(data => resolve(data))
+      .catch(err => reject(err));
+    });
+  }
 }
 
 export default new AuthRepositoryService();
