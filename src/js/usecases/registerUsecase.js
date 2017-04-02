@@ -1,40 +1,51 @@
+import validatorService from '../services/validatorService';
 import authRepositoryService from '../services/authRepositoryService';
 import {
-  registerRequest,
-  registerSuccess,
-  registerFailure
+  authRequest,
+  authSuccess,
+  authFailure
 } from '../actions/auth';
 import { ERROR } from '../constants/application';
 import dialog from '../components/modules/dialog';
 
 export class RegisterUsecase {
-  constructor({ authRepositoryService }) {
+  constructor({ authRepositoryService, validatorService }) {
     this.authRepositoryService = authRepositoryService;
+    this.validatorService = validatorService;
   }
 
   execute(push, dispatch, { userName, password, passwordConfirm, registerToken }) {
     if (password !== passwordConfirm) {
-      return dispatch(registerFailure(ERROR.PASSWORD_CONFIRM));
+      dispatch(authFailure(ERROR.VALIDATE.PASSWORD_CONFIRM));
+      return;
     }
 
-    dispatch(registerRequest());
+    const validation = this.validatorService.filter({ userName, password });
+    const error = validation.filter(item => !item.valid).map(item => item.error).join('\n');
 
-    return this.authRepositoryService.register({
+    if (error) {
+      dispatch(authFailure(error));
+      return;
+    }
+
+    dispatch(authRequest());
+
+    this.authRepositoryService.register({
       password,
       user_name: userName,
       url_token: registerToken
     })
     .then(() => dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' }))
     .then(() => {
-      dispatch(registerSuccess());
+      dispatch(authSuccess());
       push('/login');
     })
-    .catch(err => dispatch(registerFailure(err)));
+    .catch(err => dispatch(authFailure(err)));
   }
 }
 
-export class RegisterUseCaseFactory {
+export class RegisterUsecaseFactory {
   static create() {
-    return new RegisterUsecase({ authRepositoryService });
+    return new RegisterUsecase({ authRepositoryService, validatorService });
   }
 }

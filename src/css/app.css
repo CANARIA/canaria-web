@@ -4,6 +4,8 @@
 
 @import "./settings/color";
 @import "./settings/font";
+@import "./settings/size";
+
 
 /*-------------------------------------//
 //  Foundations
@@ -12,34 +14,29 @@
 @import "./foundations/reset";
 @import "./foundations/base";
 
+
 /*-------------------------------------//
 //  Pages
 //-------------------------------------*/
 
 @import "./pages/auth";
-@import "./pages/home";
+@import "./pages/signUp";
+@import "./pages/register";
+@import "./pages/login";
+
 
 /*-------------------------------------//
 //  Components
 //-------------------------------------*/
 
-/* atoms */
-
-@import "./components/atoms/button";
-@import "./components/atoms/input";
-@import "./components/atoms/icon";
-@import "./components/atoms/textButton";
-@import "./components/atoms/title";
-@import "./components/atoms/label";
-@import "./components/atoms/error";
-
-/* molecules */
-
-@import "./components/molecules/column";
-@import "./components/molecules/field";
-@import "./components/molecules/box";
-
-/* organisms */
-
-@import "./components/organisms/header";
-@import "./components/organisms/dialog";
+@import "./components/button";
+@import "./components/textButton";
+@import "./components/icon";
+@import "./components/label";
+@import "./components/input";
+@import "./components/error";
+@import "./components/field";
+@import "./components/column";
+@import "./components/poster";
+@import "./components/box";
+@import "./components/dialog";

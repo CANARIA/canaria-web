@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { TIMEOUT, ERROR } from '../constants/application';
+import assign from '../helpers/assign';
 
 export class HttpClientGateway {
   post(url, data, headers = {}) {
@@ -8,7 +9,7 @@ export class HttpClientGateway {
         url,
         data,
         method: 'post',
-        headers: Object.assign(headers, { 'Content-Type': 'application/json' }),
+        headers: assign(headers, { 'Content-Type': 'application/json' }),
         timeout: TIMEOUT
       })
       .then(({ headers, data }) => resolve({ headers, data }))

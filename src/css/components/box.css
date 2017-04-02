@@ -1,0 +1,22 @@
+/*-------------------------------------//
+//  Commmon
+//-------------------------------------*/
+
+.c-box {
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .7);
+}
+
+/*-------------------------------------//
+//  Modifier
+//-------------------------------------*/
+
+/* theme */
+
+.c-box.theme-white { background-color: var(--color-white); }
+.c-box.theme-clearwhite { background-color: rgba(255, 255, 255, .95); }
+
+/* size */
+
+.c-box.size-s { padding: 10px; }
+.c-box.size-m { padding: 20px; }

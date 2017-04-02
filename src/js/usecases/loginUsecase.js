@@ -1,12 +1,14 @@
 import authRepositoryService from '../services/authRepositoryService';
 import {
-  loginRequest,
-  loginSuccess,
-  loginFailure
+  authRequest,
+  authSuccess,
+  authFailure,
+  loginSuccess
 } from '../actions/auth';
+import { PATH } from '../constants/application';
 
-import cookieGateway from '../gateways/cookieGateway';
-import { TOKEN_KEY, JWT_KEY } from '../constants/cookie';
+// import cookieGateway from '../gateways/cookieGateway';
+// import { TOKEN_KEY, JWT_KEY } from '../constants/cookie';
 
 export class LoginUsecase {
   constructor({ authRepositoryService }) {
@@ -14,27 +16,31 @@ export class LoginUsecase {
   }
 
   execute(push, dispatch, { userName, password }) {
-    dispatch(loginRequest());
+    dispatch(authRequest());
 
-    return this.authRepositoryService.login({ user_name: userName, password })
+    this.authRepositoryService.login({ user_name: userName, password })
     .then(({ headers, data }) => {
       const { access_token, authorization } = headers;
 
-      cookieGateway.save(TOKEN_KEY, access_token);
-      cookieGateway.save(JWT_KEY, authorization);
+      console.log(access_token);
+      console.log(authorization);
+      console.log(data);
+      // cookieGateway.save(TOKEN_KEY, access_token);
+      // cookieGateway.save(JWT_KEY, authorization);
 
+      dispatch(authSuccess());
       dispatch(loginSuccess({
         access_token,
         jwt: authorization,
         user: data
       }));
-      push('/');
+      push(PATH.FEED);
     })
-    .catch(err => dispatch(loginFailure(err)));
+    .catch(err => dispatch(authFailure(err)));
   }
 }
 
-export class LoginUseCaseFactory {
+export class LoginUsecaseFactory {
   static create() {
     return new LoginUsecase({ authRepositoryService });
   }

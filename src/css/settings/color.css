@@ -1,8 +1,11 @@
+/*-------------------------------------//
+//  Color Settings
+//-------------------------------------*/
+
 :root {
   --color-primary         : #edd634;
   --color-secondary       : #258fb8;
   --color-cancel          : #d2d8e0;
-  --color-background      : #f8f7f6;
 
   --color-white           : #fff;
   --color-light-gray      : #e8e8e8;
@@ -10,5 +13,10 @@
 
   --color-font-black      : #222;
   --color-font-gray       : #666;
-  --color-font-light-gray : #8899a6;
 }
+
+/*:root {
+  --color-background      : #f8f7f6;
+
+  --color-font-light-gray : #8899a6;
+}*/

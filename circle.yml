@@ -1,8 +1,8 @@
 machine:
   node:
-    version: 7.4.0
+    version: 7.7.3
   environment:
-    YARN_VERSION: 0.19.1
+    YARN_VERSION: 0.21.3
     PATH: "${PATH}:${HOME}/.yarn/bin"
 
 dependencies:

@@ -1,28 +1,38 @@
+import validatorService from '../services/validatorService';
 import authRepositoryService from '../services/authRepositoryService';
 import {
-  signUpRequest,
-  signUpSuccess,
-  signUpFailure
+  authRequest,
+  authSuccess,
+  authFailure
 } from '../actions/auth';
 import dialog from '../components/modules/dialog';
 
 export class SignUpUsecase {
-  constructor({ authRepositoryService }) {
+  constructor({ authRepositoryService, validatorService }) {
     this.authRepositoryService = authRepositoryService;
+    this.validatorService = validatorService;
   }
 
   execute(dispatch, mailaddress) {
-    dispatch(signUpRequest());
+    const validation = this.validatorService.filter({ email: mailaddress });
+    const error = validation.filter(item => !item.valid).map(item => item.error).join('\n');
+
+    if (error) {
+      dispatch(authFailure(error));
+      return;
+    }
+
+    dispatch(authRequest());
 
     this.authRepositoryService.sendMail(mailaddress)
     .then(() => dialog('メールを送信しました。', { accept: '閉じる' }))
-    .then(() => dispatch(signUpSuccess()))
-    .catch(err => dispatch(signUpFailure(err)));
+    .then(() => dispatch(authSuccess()))
+    .catch(err => dispatch(authFailure(err)));
   }
 }
 
-export class SignUpUseCaseFactory {
+export class SignUpUsecaseFactory {
   static create() {
-    return new SignUpUsecase({ authRepositoryService });
+    return new SignUpUsecase({ authRepositoryService, validatorService });
   }
 }

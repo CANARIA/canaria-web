@@ -3,8 +3,12 @@
 CANARIAのwebアプリケーションです。
 このプロジェクトはNodeとYarnに依存しているので、先にインストールしてください。
 
-* Node v7.4.0
-* Yarn v0.19.1
+* Node v7.7.3
+* Yarn v0.21.3
+
+NodeとYarnは随時アップデートしていきます。
+
+## タスクについて
 
 ## get started
 

@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 const app = new Express();
 const store = configureStore();
 
-/* eslint-disable react/no-danger */
+/* eslint-disable react/no-danger, react/prop-types */
 const HTML = ({ content, initialState }) => {
   const head = Helmet.rewind();
   const attrs = head.htmlAttributes.toComponent();
@@ -42,7 +42,7 @@ const HTML = ({ content, initialState }) => {
     </html>
   );
 };
-/* eslint-disable react/no-danger */
+/* eslint-disable react/no-danger, react/prop-types */
 
 const getTemplate = (renderProps) => {
   const serverApp = renderToString(
@@ -56,9 +56,6 @@ const getTemplate = (renderProps) => {
 };
 
 const handleRender = (req, res) => {
-  let preFetchFlag = false;
-  let fetchNum = 0;
-
   match({ routes: getRoutes(store), location: req.url }, (err, redirect, renderProps) => {
     if (err) {
       res.status(500).send(err.message);
@@ -70,18 +67,18 @@ const handleRender = (req, res) => {
       return;
     }
 
-    const components = renderProps.components.filter(component => component && component.fetchData);
-    components.forEach((component) => {
-      preFetchFlag = true;
-      component.fetchData(renderProps, store.dispatch);
-    });
+    const preFetchComponents = renderProps.components.filter(component => component && component.preFetch);
+    let fetchNum = 0;
 
-    if (preFetchFlag) {
-      fetchNum += 1;
+    preFetchComponents.forEach(component => component.preFetch(renderProps, store.dispatch));
+
+    if (preFetchComponents.length) {
       const unscribe = store.subscribe(() => {
-        if (fetchNum >= components.length) {
-          res.send(getTemplate(renderProps));
+        fetchNum += 1;
+
+        if (fetchNum >= preFetchComponents.length) {
           unscribe();
+          res.send(getTemplate(renderProps));
         }
       });
     } else {

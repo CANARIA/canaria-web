@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Input = ({
   onChange,
@@ -16,9 +16,19 @@ const Input = ({
     placeholder={placeholder}
     type={type}
     required={required}
-    className={`a-input ${modifier}`}
+    className={`c-input ${modifier}`}
     style={styles}
   />
 );
+
+Input.propTypes = {
+  onChange: PropTypes.func,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  type: PropTypes.string,
+  required: PropTypes.bool,
+  modifier: PropTypes.string,
+  styles: PropTypes.object
+};
 
 export default Input;

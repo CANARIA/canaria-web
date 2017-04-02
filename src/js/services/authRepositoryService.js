@@ -13,9 +13,9 @@ export class AuthRepositoryService {
     });
   }
 
-  checkRegisterToken(register_token) {
+  checkRegisterToken(registerToken) {
     return new Promise((resolve, reject) => {
-      httpClientGateway.post(`${AUTH_ENDPOINT}/checktoken`, { url_token: register_token })
+      httpClientGateway.post(`${AUTH_ENDPOINT}/checktoken`, { url_token: registerToken })
       .then(() => resolve())
       .catch(err => reject(err));
     });
@@ -30,21 +30,21 @@ export class AuthRepositoryService {
   }
 
   login(userData) {
-    const access_token = uuid.v4();
+    const accessToken = uuid.v4();
     return new Promise((resolve, reject) => {
-      httpClientGateway.post(`${AUTH_ENDPOINT}/login`, userData, { access_token })
+      httpClientGateway.post(`${AUTH_ENDPOINT}/login`, userData, { access_token: accessToken })
       .then(data => resolve(data))
       .catch(err => reject(err));
     });
   }
 
-  checkLoginToken(token) {
-    return new Promise((resolve, reject) => {
-      httpClientGateway.post(`${AUTH_ENDPOINT}/check`, {}, token)
-      .then(data => resolve(data))
-      .catch(err => reject(err));
-    });
-  }
+  // checkLoginToken(token) {
+  //   return new Promise((resolve, reject) => {
+  //     httpClientGateway.post(`${AUTH_ENDPOINT}/check`, {}, token)
+  //     .then(data => resolve(data))
+  //     .catch(err => reject(err));
+  //   });
+  // }
 }
 
 export default new AuthRepositoryService();

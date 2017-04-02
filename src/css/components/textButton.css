@@ -1,0 +1,38 @@
+/*-------------------------------------//
+//  Commmon
+//-------------------------------------*/
+
+.c-textButton {
+  display: inline-block;
+  line-height: 1;
+  cursor: pointer
+}
+.c-textButton:hover { text-decoration: underline; }
+
+button.c-textButton::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
+}
+
+
+/*-------------------------------------//
+//  Modifier
+//-------------------------------------*/
+
+/* theme */
+
+.c-textButton.theme-gray { color: var(--color-font-gray); }
+button.c-textButton.theme-gray::after { border-top-color: var(--color-font-gray); }
+
+/* size */
+
+.c-textButton.size-m { font-size: 1.2rem; }
+button.c-textButton::after {
+  margin-left: 5px;
+  border-top: 6px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  vertical-align: 1px;
+}

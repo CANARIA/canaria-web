@@ -1,37 +1,45 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app';
-import SignUp from './containers/pages/signUp';
-import Register from './containers/pages/register';
-import Login from './containers/pages/login';
-import Top from './components/pages/top/top';
-import NotFound from './components/pages/notFound/notFound';
+import { PATH } from './constants/application';
+
+import App from './containers/app';
+import Home from './components/pages/home/home';
+import Feed from './containers/pages/feed/feed';
+import Ranking from './containers/pages/ranking/ranking';
+import Auth from './containers/pages/auth/auth';
+import SignUp from './containers/pages/signUp/signUp';
+import Register from './containers/pages/register/register';
+import Login from './containers/pages/login/login';
 
 const isAuthenticated = (store) => {
   const { auth } = store.getState();
-  return auth.account.authenticated;
+  return auth.authenticated;
 };
 
 export default function getRoutes(store) {
+  const userOnly = (nextState, replace, done) => {
+    if (!isAuthenticated(store)) replace(`/${PATH.LOGIN}`);
+    done();
+  };
+
   const guestOnly = (nextState, replace, done) => {
-    if (isAuthenticated(store)) {
-      replace('/');
-    }
+    if (isAuthenticated(store)) replace(`/${PATH.FEED}`);
     done();
   };
 
   const routes = (
     <Route path="/" component={App}>
-      <IndexRoute component={Top} />
-
-      <Route onEnter={guestOnly}>
-        <Route path="signup" component={SignUp} />
-        <Route path="register" component={Register} />
-        <Route path="login" component={Login} />
+      <Route component={Home}>
+        <IndexRoute component={Feed} onEnter={userOnly} />
+        <Route path={PATH.RANKING} component={Ranking} />
       </Route>
 
-      <Route path="*" component={NotFound} />
+      <Route component={Auth} onEnter={guestOnly}>
+        <Route path={PATH.SIGNUP} component={SignUp} />
+        <Route path={PATH.REGISTER} component={Register} />
+        <Route path={PATH.LOGIN} component={Login} />
+      </Route>
     </Route>
   );
 

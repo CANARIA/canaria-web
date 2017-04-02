@@ -1,0 +1,20 @@
+
+/*-------------------------------------//
+//  Commmon
+//-------------------------------------*/
+
+.c-error {
+  display: inline-block;
+  color: var(--color-red);
+  line-height: 1.4;
+}
+
+
+/*-------------------------------------//
+//  Modifier
+//-------------------------------------*/
+
+/* size */
+
+.c-error.size-s { font-size: 1.2rem; }
+.c-error.size-m { font-size: 1.4rem; }

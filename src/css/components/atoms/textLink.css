@@ -1,8 +1,0 @@
-.a-textLink {
-  display: inline-block;
-  font-size: 1.2rem;
-  line-height: 1;
-}
-.a-textLink:hover { text-decoration: underline; }
-
-.a-textLink.gray { color: var(--color-font-gray); }

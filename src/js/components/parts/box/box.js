@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Box = ({
   children,
   modifier = '',
   styles = {}
-}) => <div className={`m-box ${modifier}`} style={styles}>{children}</div>;
+}) => <div className={`c-box ${modifier}`} style={styles}>{children}</div>;
+
+Box.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.element
+  ]).isRequired,
+  modifier: PropTypes.string,
+  styles: PropTypes.object
+};
 
 export default Box;

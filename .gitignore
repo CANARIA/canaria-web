@@ -5,6 +5,7 @@
 /built
 /tmp
 bundle.js
+!/dist/favicon.ico
 
 # config files
 /config.js

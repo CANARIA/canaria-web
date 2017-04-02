@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { findDOMNode, unmountComponentAtNode } from 'react-dom';
 import Box from '../box/box';
 import Column from '../column/column';
 import Button from '../button/button';
 
-export default class Dialog extends React.Component {
+export default class Dialog extends Component {
+  static propTypes = {
+    message: PropTypes.string.isRequired,
+    accept: PropTypes.string.isRequired,
+    cancel: PropTypes.string,
+    resolve: PropTypes.func.isRequired
+  }
 
-  constructor(props) {
-    super(props);
+  constructor(...args) {
+    super(...args);
 
     this.handleAccept = this.handleAccept.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
@@ -33,13 +39,13 @@ export default class Dialog extends React.Component {
     const { message, accept, cancel } = this.props;
 
     return (
-      <div className="a-dialog">
+      <div className="c-dialog">
         <Box modifier="theme-white size-m" styles={{ width: '450px' }}>
-          <div className="a-dialog-body">
-            <p className="a-dialog-text">{message}</p>
+          <div className="c-dialog-body">
+            <p className="c-dialog-text">{message}</p>
           </div>
 
-          <div className="a-dialog-bottom">
+          <div className="c-dialog-bottom">
             <Column
               iteratorKey="dialog"
               list={

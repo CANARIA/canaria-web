@@ -9,14 +9,14 @@ export class CheckRegisterTokenUsecase {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(dispatch, register_token) {
-    this.authRepositoryService.checkRegisterToken(register_token)
+  execute(dispatch, registerToken) {
+    this.authRepositoryService.checkRegisterToken(registerToken)
     .then(() => dispatch(registerTokenValid()))
     .catch(err => dispatch(registerTokenInvalid(err)));
   }
 }
 
-export class CheckRegisterTokenUseCaseFactory {
+export class CheckRegisterTokenUsecaseFactory {
   static create() {
     return new CheckRegisterTokenUsecase({ authRepositoryService });
   }

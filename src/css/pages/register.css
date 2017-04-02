@@ -1,0 +1,10 @@
+.p-register { width: 260px; }
+.p-register-title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 2.0rem;
+  text-align: center;
+}
+.p-register-list { margin-bottom: 20px; }
+.p-register-list > li:not(:first-child) { margin-top: 15px; }
+.p-register-error { margin-bottom: 20px; }

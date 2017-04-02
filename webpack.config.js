@@ -1,5 +1,5 @@
-const devConfig = require('./tasks/webpack/dev');
-const prdConfig = require('./tasks/webpack/prd');
+const devConfig = require('./tasks/webpack/develop');
+const prdConfig = require('./tasks/webpack/production');
 
 /**
  *  npm scriptから呼ばれる

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const Column = ({
-  iteratorKey = 'defaultKey',
-  list = [],
+  list,
+  iteratorKey,
   modifier = '',
   styles = {}
 }) => {
@@ -11,13 +11,20 @@ const Column = ({
   }
 
   return (
-    <ul className={`m-column ${modifier}`} style={styles}>
+    <ul className={`c-column ${modifier}`} style={styles}>
       {list.map((item, i) => {
         const key = `${iteratorKey}-${i}`;
         return <li key={key}>{item}</li>;
       })}
     </ul>
   );
+};
+
+Column.propTypes = {
+  list: PropTypes.array.isRequired,
+  iteratorKey: PropTypes.string.isRequired,
+  modifier: PropTypes.string,
+  styles: PropTypes.object
 };
 
 export default Column;
