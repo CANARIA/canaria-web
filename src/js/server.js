@@ -70,8 +70,6 @@ const handleRender = (req, res) => {
     const preFetchComponents = renderProps.components.filter(component => component && component.preFetch);
     let fetchNum = 0;
 
-    preFetchComponents.forEach(component => component.preFetch(renderProps, store.dispatch));
-
     if (preFetchComponents.length) {
       const unscribe = store.subscribe(() => {
         fetchNum += 1;
@@ -81,6 +79,8 @@ const handleRender = (req, res) => {
           res.send(getTemplate(renderProps));
         }
       });
+
+      preFetchComponents.forEach(component => component.preFetch(renderProps, store.dispatch));
     } else {
       res.send(getTemplate(renderProps));
     }

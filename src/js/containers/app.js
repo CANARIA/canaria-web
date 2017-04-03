@@ -1,8 +1,14 @@
 import { Component, PropTypes } from 'react';
 
+import { checkLoginTokenUsecaseFactory } from '../usecases/checkLoginTokenUsecase';
+
 export default class App extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired
+  }
+
+  static preFetch(renderProps, dispatch) {
+    checkLoginTokenUsecaseFactory.create().execute(dispatch);
   }
 
   render() {
@@ -13,12 +19,7 @@ export default class App extends Component {
 /*
 import Head from './head';
 
-import { checkLoginTokenUseCaseFactory } from '../usecases/checkLoginTokenUsecase';
-
 export default class App extends React.Component {
-  static fetchData(renderProps, dispatch) {
-    checkLoginTokenUseCaseFactory.create().execute(dispatch);
-  }
 
   render() {
     return (

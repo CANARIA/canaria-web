@@ -41,5 +41,12 @@ export default handleActions({
     access_token: payload.access_token,
     jwt: payload.jwt,
     user: payload.user
-  })
+  }),
+
+  [Auth.LOGOUT]: state => assign(state, {
+    authenticated: false,
+    access_token: '',
+    jwt: '',
+    user: {}
+  }),
 }, initialState);

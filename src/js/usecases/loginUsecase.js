@@ -7,9 +7,6 @@ import {
 } from '../actions/auth';
 import { PATH } from '../constants/application';
 
-// import cookieGateway from '../gateways/cookieGateway';
-// import { TOKEN_KEY, JWT_KEY } from '../constants/cookie';
-
 export class LoginUsecase {
   constructor({ authRepositoryService }) {
     this.authRepositoryService = authRepositoryService;
@@ -21,12 +18,6 @@ export class LoginUsecase {
     this.authRepositoryService.login({ user_name: userName, password })
     .then(({ headers, data }) => {
       const { access_token, authorization } = headers;
-
-      console.log(access_token);
-      console.log(authorization);
-      console.log(data);
-      // cookieGateway.save(TOKEN_KEY, access_token);
-      // cookieGateway.save(JWT_KEY, authorization);
 
       dispatch(authSuccess());
       dispatch(loginSuccess({

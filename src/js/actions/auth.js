@@ -34,3 +34,10 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const loginSuccess = data => (
   { type: LOGIN_SUCCESS, payload: data }
 );
+
+// Logout
+export const LOGOUT = 'LOGOUT';
+
+export const logout = () => (
+  { type: LOGOUT }
+);
