@@ -1,0 +1,40 @@
+.p-home {
+  position: relative;
+  min-width: var(--size-min-width);
+}
+.p-home-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--size-header-height);
+  border-bottom: 1px solid var(--color-light-gray);
+  background-color: var(--color-white);
+}
+.p-home-nav {
+  position: fixed;
+  top: var(--size-header-height);
+  left: 0;
+  width: 100%;
+  height: var(--size-home-navi-height);
+  padding-left: var(--size-side-navi-width);
+  border-bottom: 1px solid var(--color-light-gray);
+  background-color: var(--color-white);
+}
+.p-home-aside {
+  position: fixed;
+  top: var(--size-header-height);
+  left: 0;
+  width: var(--size-side-navi-width);
+  height: calc(100vh - var(--size-header-height));
+  border-right: 1px solid var(--color-light-gray);
+  background-color: var(--color-white);
+  background-color: var(--color-white);
+}
+.p-home-container { padding: calc(var(--size-header-height) + var(--size-home-navi-height)) 0 0 var(--size-side-navi-width); }
+.p-home-main {
+  min-height: calc(100vh - var(--size-header-height) - var(--size-home-navi-height) - var(--size-footer-height));
+  border-bottom: 1px solid var(--color-light-gray);
+  background-color: var(--color-background);
+}
+.p-home-footer { height: var(--size-footer-height); }

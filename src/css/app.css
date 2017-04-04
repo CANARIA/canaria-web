@@ -23,12 +23,15 @@
 @import "./pages/signUp";
 @import "./pages/register";
 @import "./pages/login";
+@import "./pages/home";
 
 
 /*-------------------------------------//
 //  Components
 //-------------------------------------*/
 
+@import "./components/navi";
+@import "./components/footer";
 @import "./components/button";
 @import "./components/textButton";
 @import "./components/icon";

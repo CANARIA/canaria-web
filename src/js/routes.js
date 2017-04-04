@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import { PATH } from './constants/application';
 
 import App from './containers/app';
-import Home from './components/pages/home/home';
+import Home from './containers/pages/home/home';
 import Feed from './containers/pages/feed/feed';
 import Ranking from './containers/pages/ranking/ranking';
 import Auth from './containers/pages/auth/auth';

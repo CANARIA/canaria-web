@@ -25,6 +25,8 @@ button.c-textButton::after {
 
 .c-textButton.theme-gray { color: var(--color-font-gray); }
 button.c-textButton.theme-gray::after { border-top-color: var(--color-font-gray); }
+.c-textButton.theme-secondary { color: var(--color-secondary); }
+button.c-textButton.theme-secondary::after { border-top-color: var(--color-secondary); }
 
 /* size */
 

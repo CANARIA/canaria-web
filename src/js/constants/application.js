@@ -6,9 +6,14 @@ export const API_ROOT = `${FQDN}/api/v1`;
 export const PATH = {
   FEED: '',
   RANKING: 'ranking',
+  NEW: 'new',
+  TAG: 'tag',
   SIGNUP: 'signup',
   REGISTER: 'register',
-  LOGIN: 'login'
+  LOGIN: 'login',
+  TERMS: 'terms',
+  PRIVACY: 'privacy',
+  HELP: 'help'
 };
 
 export const TIMEOUT = 5000;
