@@ -29,9 +29,9 @@ class Login extends Component {
     const password = target.password.value.trim();
     const { dispatch, router } = this.props;
 
-    if (userName && password) {
-      LoginUsecaseFactory.create().execute(router.push, dispatch, { userName, password });
-    }
+    if (!userName || !password) return;
+
+    LoginUsecaseFactory.create().execute(router, dispatch, { userName, password });
   }
 
   render() {

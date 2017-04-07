@@ -25,9 +25,9 @@ class SignUp extends Component {
 
     const mailaddress = e.target.mailaddress.value.trim();
 
-    if (mailaddress) {
-      SignUpUsecaseFactory.create().execute(this.props.dispatch, mailaddress);
-    }
+    if (!mailaddress) return;
+
+    SignUpUsecaseFactory.create().execute(this.props.dispatch, mailaddress);
   }
 
   render() {

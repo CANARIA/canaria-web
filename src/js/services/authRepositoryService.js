@@ -47,12 +47,18 @@ export class AuthRepositoryService {
     });
   }
 
-  checkLoginToken(token) {
+  checkLoginToken(loginToken) {
     return new Promise((resolve, reject) => {
-      httpClientGateway.post(`${AUTH_ENDPOINT}/check`, {}, token)
+      httpClientGateway.post(`${AUTH_ENDPOINT}/check`, {}, loginToken)
       .then(data => resolve(data))
       .catch(err => reject(err));
     });
+  }
+
+  getLoginToken() {
+    const access_token = cookieGateway.load(TOKEN_KEY);
+    const Authorization = cookieGateway.load(JWT_KEY);
+    return { access_token, Authorization };
   }
 
   logout() {

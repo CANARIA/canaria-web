@@ -13,7 +13,6 @@ class Home extends Component {
 
   render() {
     const { children, location, auth } = this.props;
-    console.log(location);
 
     return (
       <div className="p-home">

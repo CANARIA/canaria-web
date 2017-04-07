@@ -8,7 +8,7 @@ export default class App extends Component {
   }
 
   static preFetch(renderProps, dispatch) {
-    checkLoginTokenUsecaseFactory.create().execute(dispatch);
+    return checkLoginTokenUsecaseFactory.create().execute(dispatch);
   }
 
   render() {

@@ -50,7 +50,7 @@ const getTemplate = (renderProps) => {
       <RouterContext {...renderProps} />
     </Provider>
   );
-  const initialState = store.getState();
+  const initialState = store.getState({ poster: { list: ['hoge'] } });
 
   return `<!doctype html>\n${renderToString(<HTML content={serverApp} initialState={initialState} />)}`;
 };
@@ -67,20 +67,25 @@ const handleRender = (req, res) => {
       return;
     }
 
-    const preFetchComponents = renderProps.components.filter(component => component && component.preFetch);
-    let fetchNum = 0;
+    const preFetches = renderProps.components
+                       .filter(component => component && component.preFetch)
+                       .map(component => component.preFetch(renderProps, store.dispatch));
 
-    if (preFetchComponents.length) {
-      const unscribe = store.subscribe(() => {
-        fetchNum += 1;
+    if (preFetches.length) {
+      Promise.all(preFetches)
+      .then(() => {
+        const redirectUrl = renderProps.components
+                            .filter(component => component && component.getRedirectUrl)
+                            .map(component => component.getRedirectUrl(store))
+                            .find(redirectUrl => toString.call(redirectUrl).includes('String'));
 
-        if (fetchNum >= preFetchComponents.length) {
-          unscribe();
-          res.send(getTemplate(renderProps));
+        if (redirectUrl) {
+          res.redirect(302, redirectUrl);
+          return;
         }
-      });
 
-      preFetchComponents.forEach(component => component.preFetch(renderProps, store.dispatch));
+        res.send(getTemplate(renderProps));
+      });
     } else {
       res.send(getTemplate(renderProps));
     }

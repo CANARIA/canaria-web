@@ -13,7 +13,12 @@ import Column from '../../../components/parts/column/column';
 
 class Auth extends Component {
   static preFetch(renderProps, dispatch) {
-    GetPostersUsecaseFactory.create().execute(dispatch);
+    return GetPostersUsecaseFactory.create().execute(dispatch);
+  }
+
+  static getRedirectUrl(store) {
+    const auth = store.getState().auth;
+    return auth.authenticated ? `/${PATH.FEED}` : null;
   }
 
   static propTypes = {

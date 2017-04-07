@@ -1,18 +1,27 @@
-import authRepositoryService from '../services/authRepositoryService';
+import { PATH } from '../constants/application';
 import {
   registerTokenValid,
-  registerTokenInvalid
+  registerTokenInvalid,
 } from '../actions/auth';
+import authRepositoryService from '../services/authRepositoryService';
 
 export class CheckRegisterTokenUsecase {
   constructor({ authRepositoryService }) {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(dispatch, registerToken) {
-    this.authRepositoryService.checkRegisterToken(registerToken)
-    .then(() => dispatch(registerTokenValid()))
-    .catch(err => dispatch(registerTokenInvalid(err)));
+  execute(router, dispatch, registerToken) {
+    return new Promise((resolve) => {
+      if (registerToken) {
+        this.authRepositoryService.checkRegisterToken(registerToken)
+        .then(() => dispatch(registerTokenValid()))
+        .catch(err => dispatch(registerTokenInvalid(err)))
+        .then(resolve);
+      } else {
+        router.replace(PATH.SIGNUP);
+        resolve();
+      }
+    });
   }
 }
 

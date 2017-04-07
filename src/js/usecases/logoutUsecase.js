@@ -1,16 +1,12 @@
 import authRepositoryService from '../services/authRepositoryService';
-import { logout } from '../actions/auth';
-import { PATH } from '../constants/application';
 
 export class LogoutUsecase {
   constructor({ authRepositoryService }) {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(push, dispatch) {
+  execute() {
     this.authRepositoryService.logout();
-    dispatch(logout());
-    push(PATH.LOGIN);
   }
 }
 

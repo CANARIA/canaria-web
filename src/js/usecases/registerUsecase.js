@@ -1,11 +1,12 @@
-import validatorService from '../services/validatorService';
-import authRepositoryService from '../services/authRepositoryService';
+import { ERROR } from '../constants/application';
 import {
   authRequest,
   authSuccess,
   authFailure
 } from '../actions/auth';
-import { ERROR } from '../constants/application';
+import validatorService from '../services/validatorService';
+import authRepositoryService from '../services/authRepositoryService';
+
 import dialog from '../components/modules/dialog';
 
 export class RegisterUsecase {
@@ -14,23 +15,17 @@ export class RegisterUsecase {
     this.validatorService = validatorService;
   }
 
-  execute(push, dispatch, { userName, password, passwordConfirm, registerToken }) {
-    if (password !== passwordConfirm) {
-      dispatch(authFailure(ERROR.VALIDATE.PASSWORD_CONFIRM));
-      return;
-    }
+  execute(router, dispatch, { userName, password, passwordConfirm, registerToken }) {
+    if (password !== passwordConfirm) return dispatch(authFailure(ERROR.VALIDATE.PASSWORD_CONFIRM));
 
     const validation = this.validatorService.filter({ userName, password });
     const error = validation.filter(item => !item.valid).map(item => item.error).join('\n');
 
-    if (error) {
-      dispatch(authFailure(error));
-      return;
-    }
+    if (error) return dispatch(authFailure(error));
 
     dispatch(authRequest());
 
-    this.authRepositoryService.register({
+    return this.authRepositoryService.register({
       password,
       user_name: userName,
       url_token: registerToken
@@ -38,7 +33,7 @@ export class RegisterUsecase {
     .then(() => dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' }))
     .then(() => {
       dispatch(authSuccess());
-      push('/login');
+      router.push('/login');
     })
     .catch(err => dispatch(authFailure(err)));
   }

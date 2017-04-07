@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { PATH } from '../../../constants/application';
 import { CheckRegisterTokenUsecaseFactory } from '../../../usecases/checkRegisterTokenUsecase';
 import { RegisterUsecaseFactory } from '../../../usecases/registerUsecase';
 
@@ -20,12 +19,7 @@ class Register extends Component {
 
   static preFetch(renderProps, dispatch) {
     const registerToken = renderProps.location.query.register_token;
-
-    if (registerToken) {
-      CheckRegisterTokenUsecaseFactory.create().execute(dispatch, registerToken);
-    } else {
-      renderProps.router.replace(PATH.SIGNUP);
-    }
+    return CheckRegisterTokenUsecaseFactory.create().execute(renderProps.router, dispatch, registerToken);
   }
 
   constructor(...args) {
@@ -44,14 +38,9 @@ class Register extends Component {
     const { location, router, dispatch } = this.props;
     const registerToken = location.query.register_token;
 
-    if (userName && password && passwordConfirm) {
-      RegisterUsecaseFactory.create().execute(router.push, dispatch, {
-        userName,
-        password,
-        passwordConfirm,
-        registerToken
-      });
-    }
+    if (!userName || !password || !passwordConfirm) return;
+
+    RegisterUsecaseFactory.create().execute(router, dispatch, { userName, password, passwordConfirm, registerToken });
   }
 
   render() {

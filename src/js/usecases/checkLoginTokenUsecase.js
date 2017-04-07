@@ -1,11 +1,8 @@
-import authRepositoryService from '../services/authRepositoryService';
 import {
   authInitialize,
   loginSuccess
 } from '../actions/auth';
-
-import cookieGateway from '../gateways/cookieGateway';
-import { TOKEN_KEY, JWT_KEY } from '../constants/cookie';
+import authRepositoryService from '../services/authRepositoryService';
 
 export class CheckLoginTokenUsecase {
   constructor({ authRepositoryService }) {
@@ -13,26 +10,25 @@ export class CheckLoginTokenUsecase {
   }
 
   execute(dispatch) {
-    const access_token = cookieGateway.load(TOKEN_KEY);
-    const Authorization = cookieGateway.load(JWT_KEY);
+    return new Promise((resolve) => {
+      const { access_token, Authorization } = this.authRepositoryService.getLoginToken();
 
-    if (!access_token || !Authorization) {
-      dispatch(authInitialize());
-      return;
-    }
+      if (!access_token || !Authorization) {
+        dispatch(authInitialize());
+        return resolve();
+      }
 
-    this.authRepositoryService.checkLoginToken({ access_token, Authorization })
-    .then(({ data }) => {
-      dispatch(loginSuccess({
+      return this.authRepositoryService.checkLoginToken({ access_token, Authorization })
+      .then(({ data }) => dispatch(loginSuccess({
         access_token,
         jwt: Authorization,
         user: data
-      }));
-    })
-    .catch(() => {
-      cookieGateway.remove(TOKEN_KEY);
-      cookieGateway.remove(JWT_KEY);
-      dispatch(authInitialize());
+      })))
+      .catch(() => {
+        this.authRepositoryService.logout();
+        dispatch(authInitialize());
+      })
+      .then(resolve);
     });
   }
 }

@@ -17,14 +17,11 @@ export class SignUpUsecase {
     const validation = this.validatorService.filter({ email: mailaddress });
     const error = validation.filter(item => !item.valid).map(item => item.error).join('\n');
 
-    if (error) {
-      dispatch(authFailure(error));
-      return;
-    }
+    if (error) return dispatch(authFailure(error));
 
     dispatch(authRequest());
 
-    this.authRepositoryService.sendMail(mailaddress)
+    return this.authRepositoryService.sendMail(mailaddress)
     .then(() => dialog('メールを送信しました。', { accept: '閉じる' }))
     .then(() => dispatch(authSuccess()))
     .catch(err => dispatch(authFailure(err)));

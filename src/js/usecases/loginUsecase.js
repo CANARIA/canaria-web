@@ -1,18 +1,18 @@
-import authRepositoryService from '../services/authRepositoryService';
+import { PATH } from '../constants/application';
 import {
   authRequest,
   authSuccess,
   authFailure,
   loginSuccess
 } from '../actions/auth';
-import { PATH } from '../constants/application';
+import authRepositoryService from '../services/authRepositoryService';
 
 export class LoginUsecase {
   constructor({ authRepositoryService }) {
     this.authRepositoryService = authRepositoryService;
   }
 
-  execute(push, dispatch, { userName, password }) {
+  execute(router, dispatch, { userName, password }) {
     dispatch(authRequest());
 
     this.authRepositoryService.login({ user_name: userName, password })
@@ -25,7 +25,7 @@ export class LoginUsecase {
         jwt: authorization,
         user: data
       }));
-      push(PATH.FEED);
+      router.push(PATH.FEED);
     })
     .catch(err => dispatch(authFailure(err)));
   }

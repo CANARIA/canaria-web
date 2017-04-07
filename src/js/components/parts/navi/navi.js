@@ -43,7 +43,7 @@ export default class Navi extends Component {
       additionClass += location.pathname.includes(`/${item.url}`) ? ' is-active' : '';
     }
 
-    return <li key={`navi-${item.url}`}><Link className={`c-navi-link${additionClass}`} to={`/${item.url}`}>{item.name}</Link></li>
+    return <li key={`navi-${item.url}`}><Link className={`c-navi-link${additionClass}`} to={`/${item.url}`}>{item.name}</Link></li>;
   }
 
   render() {
