@@ -1,4 +1,4 @@
-import { ERROR } from '../constants/application';
+import { PATH, ERROR } from '../constants/application';
 import {
   authRequest,
   authSuccess,
@@ -33,7 +33,7 @@ export class RegisterUsecase {
     .then(() => dialog('ユーザー登録が完了しました。', { accept: 'ログイン画面へ' }))
     .then(() => {
       dispatch(authSuccess());
-      router.push('/login');
+      router.push(`/${PATH.LOGIN}`);
     })
     .catch(err => dispatch(authFailure(err)));
   }

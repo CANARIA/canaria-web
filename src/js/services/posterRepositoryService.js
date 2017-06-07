@@ -1,5 +1,5 @@
 export class PosterRepositoryService {
-  get() {
+  fetch() {
     return new Promise((resolve) => {
       // TODO: 実際のAPIを叩く処理に変更する
       const posters = [

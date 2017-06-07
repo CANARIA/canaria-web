@@ -1,6 +1,31 @@
 import { Component, PropTypes } from 'react';
 
-import { checkLoginTokenUsecaseFactory } from '../usecases/checkLoginTokenUsecase';
+import {
+  authInitialize,
+  loginSuccess
+} from '../actions/auth';
+import authRepositoryService from '../services/authRepositoryService';
+
+const preFetch = dispatch => new Promise((resolve) => {
+  const { access_token, Authorization } = authRepositoryService.getLoginToken();
+
+  if (!access_token || !Authorization) {
+    dispatch(authInitialize());
+    return resolve();
+  }
+
+  return authRepositoryService.checkLoginToken({ access_token, Authorization })
+  .then(({ data }) => dispatch(loginSuccess({
+    access_token,
+    jwt: Authorization,
+    user: data
+  })))
+  .catch(() => {
+    authRepositoryService.logout();
+    dispatch(authInitialize());
+  })
+  .then(resolve);
+});
 
 export default class App extends Component {
   static propTypes = {
@@ -8,7 +33,7 @@ export default class App extends Component {
   }
 
   static preFetch(renderProps, dispatch) {
-    return checkLoginTokenUsecaseFactory.create().execute(dispatch);
+    return preFetch(dispatch);
   }
 
   render() {

@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { PATH } from '../../../constants/application';
 import { authInitialize } from '../../../actions/auth';
-import { GetPostersUsecaseFactory } from '../../../usecases/getPostersUsecase';
+import { fetchPosters } from '../../../actions/poster';
+import posterRepositoryService from '../../../services/posterRepositoryService';
 
 import Poster from '../../../components/parts/poster/poster';
 import Button from '../../../components/parts/button/button';
@@ -11,12 +12,18 @@ import TextButton from '../../../components/parts/textButton/textButton';
 import Icon from '../../../components/parts/icon/icon';
 import Column from '../../../components/parts/column/column';
 
+const preFetch = dispatch => new Promise(async (resolve) => {
+  const posters = await posterRepositoryService.fetch().catch(() => []);
+  dispatch(fetchPosters(posters));
+  resolve();
+});
+
 class Auth extends Component {
   static preFetch(renderProps, dispatch) {
-    return GetPostersUsecaseFactory.create().execute(dispatch);
+    return preFetch(dispatch);
   }
 
-  static getRedirectUrl(store) {
+  static getRedirectUrl(renderProps, store) {
     const auth = store.getState().auth;
     return auth.authenticated ? `/${PATH.FEED}` : null;
   }

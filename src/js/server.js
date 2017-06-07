@@ -76,7 +76,7 @@ const handleRender = (req, res) => {
       .then(() => {
         const redirectUrl = renderProps.components
                             .filter(component => component && component.getRedirectUrl)
-                            .map(component => component.getRedirectUrl(store))
+                            .map(component => component.getRedirectUrl(renderProps, store))
                             .find(redirectUrl => toString.call(redirectUrl).includes('String'));
 
         if (redirectUrl) {

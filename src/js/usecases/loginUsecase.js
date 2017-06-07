@@ -25,7 +25,7 @@ export class LoginUsecase {
         jwt: authorization,
         user: data
       }));
-      router.push(PATH.FEED);
+      router.push(`/${PATH.FEED}`);
     })
     .catch(err => dispatch(authFailure(err)));
   }

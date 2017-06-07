@@ -1,5 +1,5 @@
-export const GET_POSTERS = 'GET_POSTERS';
+export const FETCH_POSTERS = 'FETCH_POSTERS';
 
-export const getPosters = posters => (
-  { type: GET_POSTERS, payload: posters }
+export const fetchPosters = posters => (
+  { type: FETCH_POSTERS, payload: posters }
 );

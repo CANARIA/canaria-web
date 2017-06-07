@@ -1,13 +1,30 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { CheckRegisterTokenUsecaseFactory } from '../../../usecases/checkRegisterTokenUsecase';
+import { PATH } from '../../../constants/application';
+import {
+  registerTokenValid,
+  registerTokenInvalid,
+} from '../../../actions/auth';
+import authRepositoryService from '../../../services/authRepositoryService';
 import { RegisterUsecaseFactory } from '../../../usecases/registerUsecase';
 
 import Box from '../../../components/parts/box/box';
 import Field from '../../../components/parts/field/field';
 import Button from '../../../components/parts/button/button';
 import Error from '../../../components/parts/error/error';
+
+const preFetch = (router, dispatch, registerToken) => new Promise((resolve) => {
+  if (registerToken) {
+    authRepositoryService.checkRegisterToken(registerToken)
+    .then(() => dispatch(registerTokenValid()))
+    .catch(err => dispatch(registerTokenInvalid(err)))
+    .then(resolve);
+  } else {
+    router.replace(`/${PATH.SIGNUP}`);
+    resolve();
+  }
+});
 
 class Register extends Component {
   static propTypes = {
@@ -19,7 +36,12 @@ class Register extends Component {
 
   static preFetch(renderProps, dispatch) {
     const registerToken = renderProps.location.query.register_token;
-    return CheckRegisterTokenUsecaseFactory.create().execute(renderProps.router, dispatch, registerToken);
+    return preFetch(renderProps.router, dispatch, registerToken);
+  }
+
+  static getRedirectUrl(renderProps) {
+    const registerToken = renderProps.location.query.register_token;
+    return registerToken ? null : `/${PATH.SIGNUP}`;
   }
 
   constructor(...args) {
