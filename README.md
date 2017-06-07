@@ -1,12 +1,12 @@
 # canaria-web
 
-CANARIAのwebアプリケーションです。
-このプロジェクトはNodeとYarnに依存しているので、先にインストールしてください。
+CANARIAのwebアプリケーションです。  
+このプロジェクトはNodeに依存しているので、先にインストールしてください。
 
-* Node v7.7.3
-* Yarn v0.21.3
+* Node v8.0.0
 
-NodeとYarnは随時アップデートしていきます。
+Nodeは随時アップデートしていきます。  
+バージョン管理ツールを使うのがおすすめです。1番良いのは [nodebrew](https://github.com/hokaccha/nodebrew) かも。
 
 ## タスクについて
 
@@ -15,7 +15,7 @@ NodeとYarnは随時アップデートしていきます。
 ```
 $ git clone git@github.com:CANARIA/canaria-web.git
 $ cd canaria-web
-$ yarn install
+$ npm install
 
 # ビルド
 $ docker build -t canaria-web:latest .
@@ -24,5 +24,5 @@ $ docker build -t canaria-web:latest .
 $ docker run -d -it -v $(pwd):/node -p 3000:3000 canaria-web:latest /bin/sh
 
 # Nodeサーバ起動
-$ yarn start
+$ npm start
 ```
