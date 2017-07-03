@@ -1,13 +1,6 @@
 const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-const base = require('./base');
 
-/**
- *  開発時のwebpackの設定
- *  baseの設定を拡張している
- */
-const devConfig = {
-  // custom configs on development
+module.exports = {
   cache: true,
   devtool: 'inline-source-map',
   stats: {
@@ -21,7 +14,6 @@ const devConfig = {
     cached: true, // add also information about cached (not built) modules
   },
   plugins: [
-    // フロントのJSコードの中で環境変数としてNODE_ENVにdevelopを渡す
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
@@ -29,5 +21,3 @@ const devConfig = {
     }),
   ],
 };
-
-module.exports = webpackMerge(base, devConfig);

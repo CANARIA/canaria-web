@@ -1,19 +1,6 @@
 {
-  "extends": "airbnb",
-  "rules": {},
-  "plugins": ["react"],
-  "parser": "babel-eslint",
-  "env": {
-    "es6": true,
-    "node": true,
-    "browser": true
-  },
-  "globals": {
-    "expect": true
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
+  "extends": "mizchi",
+  "rules": {
+    "react/display-name": 0
   }
 }
