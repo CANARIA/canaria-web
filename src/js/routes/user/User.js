@@ -3,17 +3,17 @@
 import React from 'react'
 import Link from '../../components/parts/Link'
 
-const Home = () => (
+const User = () => (
   <div>
-    <h1>Home</h1>
+    <h1>User</h1>
     <nav>
       <ul>
         <li>
-          <Link to="/user">to user</Link>
+          <Link to="/">to home</Link>
         </li>
       </ul>
     </nav>
   </div>
 )
 
-export default Home
+export default User

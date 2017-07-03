@@ -2,9 +2,9 @@
 
 import React from 'react'
 
-class Html extends React.Component {
+class Html extends React.PureComponent {
   render() {
-    const { title, description, children } = this.props
+    const { title, description, children, initialState } = this.props
 
     return (
       <html>
@@ -18,7 +18,8 @@ class Html extends React.Component {
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
-          <script src="/bundle.js"></script>
+          <script id="initial-state" type="text/plain" data-json={JSON.stringify(initialState)} />
+          <script src="/bundle.js" />
         </body>
       </html>
     )

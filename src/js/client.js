@@ -3,22 +3,23 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import configureStore, { history } from './store/configureStore'
+import { createBrowserHistory } from 'history'
+import configureStore from './store/configureStore'
 import router from './router'
-import Route from './containers/Route'
+import App from './components/App'
 
-startApp()
 async function startApp() {
-  const initialState = {}
-  const store = configureStore(initialState)
-  const route = await router.resolve({
-    path: location.pathname
-  })
+  const initialState = JSON.parse(document.getElementById('initial-state').getAttribute('data-json'))
+  const history = createBrowserHistory()
+  const store = configureStore(initialState, history)
+  const route = await router.resolve({ path: location.pathname })
 
   render(
     <Provider store={store}>
-      <Route route={route} history={history} />
+      <App historyController={router} history={history}>{route.component}</App>
     </Provider>,
     document.getElementById('app')
   )
 }
+
+startApp()

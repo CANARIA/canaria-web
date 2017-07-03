@@ -8,7 +8,10 @@ import bodyParser from 'body-parser'
 import PrettyError from 'pretty-error'
 import React from 'react'
 import ReactDOM from 'react-dom/server'
+import { Provider } from 'react-redux'
+import { createMemoryHistory } from 'history'
 
+import configureStore from './store/configureStore'
 import config from './config'
 import router from './router'
 import App from './components/App'
@@ -30,6 +33,8 @@ app.use(bodyParser.json())
 // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
   try {
+    const history = createMemoryHistory({ initialEntries: [req.path] })
+    const store = configureStore({}, history)
     const route = await router.resolve({
       path: req.path,
       query: req.query
@@ -40,10 +45,13 @@ app.get('*', async (req, res, next) => {
       return
     }
 
-    console.log(route)
-
     const data = Object.assign({}, route, {
-      children: ReactDOM.renderToString(<App>{route.component}</App>)
+      children: ReactDOM.renderToString(
+        <Provider store={store}>
+          <App historyController={router} history={history}>{route.component}</App>
+        </Provider>
+      ),
+      initialState: store.getState()
     })
 
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)

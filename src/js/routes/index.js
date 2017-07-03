@@ -1,6 +1,7 @@
 /* @flow */
 
 import home from './home'
+import user from './user'
 
 const routes = {
   path: '/',
@@ -9,6 +10,10 @@ const routes = {
     {
       path: '/',
       action: home
+    },
+    {
+      path: '/user',
+      action: user
     }
   ],
 
