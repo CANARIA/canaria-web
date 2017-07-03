@@ -15,9 +15,6 @@ const routes = {
   async action({ next }) {
     const route = await next()
 
-    console.log('rootのaction')
-    console.log(route)
-
     route.title = `${route.title || 'Untitled Page'} - Sample`
     route.description = route.description || ''
 

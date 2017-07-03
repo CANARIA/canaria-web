@@ -40,6 +40,8 @@ app.get('*', async (req, res, next) => {
       return
     }
 
+    console.log(route)
+
     const data = Object.assign({}, route, {
       children: ReactDOM.renderToString(<App>{route.component}</App>)
     })

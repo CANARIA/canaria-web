@@ -4,7 +4,6 @@ import React from 'react'
 import Home from './Home'
 
 async function action() {
-  console.log('homeのaction')
   return {
     chunks: ['home'],
     title: 'Home',
