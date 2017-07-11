@@ -48,7 +48,9 @@ app.get('*', async (req, res, next) => {
     const data = Object.assign({}, route, {
       children: ReactDOM.renderToString(
         <Provider store={store}>
-          <App historyController={router} history={history}>{route.component}</App>
+          <App historyController={router} history={history}>
+            {route.component}
+          </App>
         </Provider>
       ),
       initialState: store.getState()
@@ -107,11 +109,6 @@ export default app
 // import models from './data/models'
 // import schema from './data/schema'
 // import assets from './assets.json' // eslint-disable-line import/no-unresolved
-
-
-
-
-
 
 // //
 // // Authentication

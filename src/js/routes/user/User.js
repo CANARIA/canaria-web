@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from '../../components/parts/Link'
 
-const User = () => (
+const User = () =>
   <div>
     <h1>User</h1>
     <nav>
@@ -14,6 +14,5 @@ const User = () => (
       </ul>
     </nav>
   </div>
-)
 
 export default User

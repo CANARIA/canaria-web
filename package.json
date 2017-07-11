@@ -15,8 +15,13 @@
     "release:css": "postcss ./src/css/app.css -o ./public/bundle.css -c ./tasks/postcss --no-map",
     "build": "npm-run-all build:*",
     "release": "npm-run-all release:*",
-    "lint": "eslint ./src/js ./tasks",
-    "start": "babel-node ./src/js/server.js"
+    "lint": "eslint ./src/js",
+    "format": "prettier-eslint --write \"src/**/*.js\"",
+    "start": "babel-node ./src/js/server.js",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": ["npm run format", "git add"]
   },
   "repository": {
     "type": "git",
@@ -56,7 +61,15 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^4.1.1",
-    "eslint-config-mizchi": "^1.1.2"
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.1",
+    "prettier-eslint-cli": "^4.1.1"
   }
 }

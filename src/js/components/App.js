@@ -35,14 +35,15 @@ class App extends React.Component {
     console.log(currentRouter)
     console.log('よばれた？')
 
-    if (prevRouter.pathname !== currentRouter.pathname
-    || prevRouter.hash !== currentRouter.hash
-    || prevRouter.search !== currentRouter.search) {
+    if (
+      prevRouter.pathname !== currentRouter.pathname ||
+      prevRouter.hash !== currentRouter.hash ||
+      prevRouter.search !== currentRouter.search
+    ) {
       console.log('とどいた？')
       const { historyController } = this.props
 
-      historyController.resolve({ path: prevRouter.pathname })
-      .then(route => {
+      historyController.resolve({ path: prevRouter.pathname }).then(route => {
         this.setState({
           children: route.component
         })

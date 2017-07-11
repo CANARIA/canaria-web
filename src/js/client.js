@@ -9,14 +9,18 @@ import router from './router'
 import App from './components/App'
 
 async function startApp() {
-  const initialState = JSON.parse(document.getElementById('initial-state').getAttribute('data-json'))
+  const initialState = JSON.parse(
+    document.getElementById('initial-state').getAttribute('data-json')
+  )
   const history = createBrowserHistory()
   const store = configureStore(initialState, history)
   const route = await router.resolve({ path: location.pathname })
 
   render(
     <Provider store={store}>
-      <App historyController={router} history={history}>{route.component}</App>
+      <App historyController={router} history={history}>
+        {route.component}
+      </App>
     </Provider>,
     document.getElementById('app')
   )

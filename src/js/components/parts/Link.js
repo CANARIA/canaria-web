@@ -2,7 +2,10 @@
 
 import React from 'react'
 import { connect } from 'react-redux'
-import { push as pushAction, replace as replaceAction } from '../../actions/history'
+import {
+  push as pushAction,
+  replace as replaceAction
+} from '../../actions/history'
 
 class Link extends React.PureComponent {
   constructor(props) {
@@ -12,12 +15,14 @@ class Link extends React.PureComponent {
   }
 
   _handleClick(e) {
-    if ((e.button && e.button !== 0)
-      || e.metaKey
-      || e.altKey
-      || e.ctrlKey
-      || e.shiftKey
-      || e.defaultPrevented === true) {
+    if (
+      (e.button && e.button !== 0) ||
+      e.metaKey ||
+      e.altKey ||
+      e.ctrlKey ||
+      e.shiftKey ||
+      e.defaultPrevented === true
+    ) {
       return
     }
 
