@@ -21,7 +21,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["npm run format", "git add"]
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -64,7 +67,6 @@
     "babel-eslint": "^7.2.3",
     "eslint": "^4.1.1",
     "eslint-config-prettier": "^2.3.0",
-    "eslint-plugin-flowtype": "^2.35.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^7.1.0",
