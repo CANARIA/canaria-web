@@ -1,5 +1,3 @@
-/* @flow */
-
 export default {
   // Node.js app
   port: process.env.PORT || 3000,

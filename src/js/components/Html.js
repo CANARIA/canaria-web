@@ -1,5 +1,3 @@
-/* @flow */
-
 import React from 'react'
 
 class Html extends React.PureComponent {

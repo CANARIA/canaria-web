@@ -1,5 +1,3 @@
-/* @flow */
-
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogger } from 'redux-logger'
 import historyMiddleware from '../middlewares/history'

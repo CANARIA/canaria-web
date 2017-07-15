@@ -1,5 +1,3 @@
-/* @flow */
-
 import { combineReducers } from 'redux'
 import historyReducer from './history'
 

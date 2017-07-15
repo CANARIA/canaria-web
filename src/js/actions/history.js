@@ -1,5 +1,3 @@
-/* @flow */
-
 export const PUSH = 'HISTORY_PUSH'
 export const REPLACE = 'HISTORY_REPLACE'
 export const GO = 'HISTORY_GO'

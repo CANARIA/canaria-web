@@ -1,5 +1,3 @@
-/* @flow */
-
 import path from 'path'
 import express from 'express'
 import compression from 'compression'

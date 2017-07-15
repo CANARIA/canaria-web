@@ -1,5 +1,3 @@
-/* @flow */
-
 import { PUSH, REPLACE, GO, GO_BACK, GO_FORWARD } from '../actions/history'
 
 const historyMiddleware = history => () => next => action => {

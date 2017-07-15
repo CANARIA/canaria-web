@@ -1,5 +1,3 @@
-/* @flow */
-
 import Router from 'universal-router'
 import routes from './routes'
 

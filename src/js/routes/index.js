@@ -1,5 +1,3 @@
-/* @flow */
-
 import home from './home'
 import user from './user'
 

@@ -1,5 +1,3 @@
-/* @flow */
-
 import { LOCATION_CHANGE } from '../actions/history'
 
 const initialState = {
