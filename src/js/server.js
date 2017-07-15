@@ -48,7 +48,7 @@ app.get('*', async (req, res, next) => {
     const data = Object.assign({}, route, {
       children: ReactDOM.renderToString(
         <Provider store={store}>
-          <App historyController={router} history={history}>
+          <App router={router} history={history}>
             {route.component}
           </App>
         </Provider>
@@ -96,65 +96,6 @@ app.listen(config.port, () => {
 })
 
 export default app
-
-// import expressJwt, { UnauthorizedError as Jwt401Error } from 'express-jwt'
-// import expressGraphQL from 'express-graphql'
-// import jwt from 'jsonwebtoken'
-// import fetch from 'node-fetch'
-
-// import { ErrorPageWithoutStyle } from './routes/error/ErrorPage'
-// import errorPageStyle from './routes/error/ErrorPage.css'
-// import createFetch from './createFetch'
-// import passport from './passport'
-// import models from './data/models'
-// import schema from './data/schema'
-// import assets from './assets.json' // eslint-disable-line import/no-unresolved
-
-// //
-// // Authentication
-// // -----------------------------------------------------------------------------
-// app.use(expressJwt({
-//   secret: config.auth.jwt.secret,
-//   credentialsRequired: false,
-//   getToken: req => req.cookies.id_token,
-// }))
-// // Error handler for express-jwt
-// app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-//   if (err instanceof Jwt401Error) {
-//     console.error('[express-jwt-error]', req.cookies.id_token)
-//     // `clearCookie`, otherwise user can't use web-app until cookie expires
-//     res.clearCookie('id_token')
-//   }
-//   next(err)
-// })
-
-// app.use(passport.initialize())
-
-// if (__DEV__) {
-//   app.enable('trust proxy')
-// }
-// app.get('/login/facebook',
-//   passport.authenticate('facebook', { scope: ['email', 'user_location'], session: false }),
-// )
-// app.get('/login/facebook/return',
-//   passport.authenticate('facebook', { failureRedirect: '/login', session: false }),
-//   (req, res) => {
-//     const expiresIn = 60 * 60 * 24 * 180 // 180 days
-//     const token = jwt.sign(req.user, config.auth.jwt.secret, { expiresIn })
-//     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true })
-//     res.redirect('/')
-//   },
-// )
-
-// //
-// // Register API middleware
-// // -----------------------------------------------------------------------------
-// app.use('/graphql', expressGraphQL(req => ({
-//   schema,
-//   graphiql: __DEV__,
-//   rootValue: { request: req },
-//   pretty: __DEV__,
-// })))
 
 // //
 // // Hot Module Replacement

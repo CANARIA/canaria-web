@@ -18,7 +18,7 @@ async function startApp() {
 
   render(
     <Provider store={store}>
-      <App historyController={router} history={history}>
+      <App router={router} history={history}>
         {route.component}
       </App>
     </Provider>,

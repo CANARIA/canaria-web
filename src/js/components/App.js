@@ -27,23 +27,17 @@ class App extends React.Component {
   }
 
   componentWillUpdate(prevProps, prevState) {
-    const prevRouter = prevProps.router
-    const currentRouter = this.props.router
-
-    console.log('よばれた？')
-    console.log(prevRouter)
-    console.log(currentRouter)
-    console.log('よばれた？')
+    const prevRouting = prevProps.routing
+    const currentRouting = this.props.routing
 
     if (
-      prevRouter.pathname !== currentRouter.pathname ||
-      prevRouter.hash !== currentRouter.hash ||
-      prevRouter.search !== currentRouter.search
+      prevRouting.pathname !== currentRouting.pathname ||
+      prevRouting.hash !== currentRouting.hash ||
+      prevRouting.search !== currentRouting.search
     ) {
-      console.log('とどいた？')
-      const { historyController } = this.props
+      const { router } = this.props
 
-      historyController.resolve({ path: prevRouter.pathname }).then(route => {
+      router.resolve({ path: prevRouting.pathname }).then(route => {
         this.setState({
           children: route.component
         })
@@ -57,5 +51,5 @@ class App extends React.Component {
 }
 
 export default connect(state => ({
-  router: state.router
+  routing: state.routing
 }))(App)

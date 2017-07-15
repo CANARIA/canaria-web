@@ -4,7 +4,7 @@ import { combineReducers } from 'redux'
 import historyReducer from './history'
 
 const rootReducer = combineReducers({
-  router: historyReducer
+  routing: historyReducer
 })
 
 export default rootReducer

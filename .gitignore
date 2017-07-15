@@ -4,7 +4,7 @@
 /dist
 /built
 /tmp
-bundle.js
+bundle.*
 !/dist/favicon.ico
 
 # config files
