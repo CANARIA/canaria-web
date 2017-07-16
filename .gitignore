@@ -5,10 +5,6 @@
 /built
 /tmp
 bundle.*
-!/dist/favicon.ico
-
-# config files
-/config.js
 
 # dependencies
 /node_modules

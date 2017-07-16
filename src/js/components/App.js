@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { locationChange } from '../actions/history'
 
@@ -13,6 +14,27 @@ function dispatchLocationChange(dispatch, location) {
 }
 
 class App extends React.Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    history: PropTypes.shape({
+      listen: PropTypes.func.isRequired,
+      location: PropTypes.shape({
+        pathname: PropTypes.string.isRequired,
+        search: PropTypes.string.isRequired,
+        hash: PropTypes.string.isRequired
+      }).isRequired
+    }).isRequired,
+    routing: PropTypes.shape({
+      pathname: PropTypes.string.isRequired,
+      search: PropTypes.string.isRequired,
+      hash: PropTypes.string.isRequired
+    }).isRequired,
+    router: PropTypes.shape({
+      resolve: PropTypes.func.isRequired
+    }).isRequired
+  }
+
   constructor(props) {
     super(props)
 
@@ -24,7 +46,7 @@ class App extends React.Component {
     history.listen(location => dispatchLocationChange(dispatch, location))
   }
 
-  componentWillUpdate(prevProps, prevState) {
+  componentWillUpdate(prevProps) {
     const prevRouting = prevProps.routing
     const currentRouting = this.props.routing
 

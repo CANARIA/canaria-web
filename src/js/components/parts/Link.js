@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
   push as pushAction,
@@ -6,6 +7,14 @@ import {
 } from '../../actions/history'
 
 class Link extends React.PureComponent {
+  static propTypes = {
+    replace: PropTypes.bool,
+    to: PropTypes.string.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
+      .isRequired
+  }
+
   constructor(props) {
     super(props)
 
