@@ -1,6 +1,6 @@
-const webpack = require('webpack');
+import webpack from 'webpack'
 
-module.exports = {
+export default {
   cache: true,
   devtool: 'inline-source-map',
   stats: {
@@ -11,13 +11,13 @@ module.exports = {
     version: true, // add webpack version information
     chunks: true, // add chunk information
     chunkModules: true, // add built modules information to chunk information
-    cached: true, // add also information about cached (not built) modules
+    cached: true // add also information about cached (not built) modules
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('development'),
-      },
-    }),
-  ],
-};
+        NODE_ENV: JSON.stringify('development')
+      }
+    })
+  ]
+}

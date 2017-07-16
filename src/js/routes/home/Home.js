@@ -1,16 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
+
 import Link from '../../components/parts/Link'
 
+const Wrapper = styled.div`background-color: red;`
+
 const Home = () =>
-  <div>
+  <Wrapper>
     <h1>Home</h1>
     <nav>
       <ul>
         <li>
-          <Link to="/user">to user</Link>
+          <Link to="/login">to login</Link>
         </li>
       </ul>
     </nav>
-  </div>
+  </Wrapper>
 
 export default Home

@@ -1,24 +1,26 @@
+import { PATH, SERVICE_NAME } from '../constants/application'
+
 import home from './home'
-import user from './user'
+import login from './auth/login'
 
 const routes = {
   path: '/',
 
   children: [
     {
-      path: '/',
+      path: PATH.HOME,
       action: home
     },
     {
-      path: '/user',
-      action: user
+      path: PATH.LOGIN,
+      action: login
     }
   ],
 
   async action({ next }) {
     const route = await next()
 
-    route.title = `${route.title || 'Untitled Page'} - Sample`
+    route.title = `${route.title || 'Untitled Page'} - ${SERVICE_NAME}`
     route.description = route.description || ''
 
     return route

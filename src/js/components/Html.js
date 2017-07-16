@@ -9,6 +9,7 @@ const Html = ({ title, description, children, initialState }) =>
       <link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
       <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png" />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple_icon.png" />
+      <link rel="stylesheet" href="/bundle.css" />
       <title>
         {title}
       </title>
@@ -27,8 +28,9 @@ const Html = ({ title, description, children, initialState }) =>
 Html.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
-  initialState: PropTypes.string.isRequired
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
+  initialState: PropTypes.object.isRequired
 }
 
 export default Html

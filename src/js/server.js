@@ -8,6 +8,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/server'
 import { Provider } from 'react-redux'
 import { createMemoryHistory } from 'history'
+import { ServerStyleSheet } from 'styled-components'
 
 import configureStore from './store/configureStore'
 import config from './config'
@@ -43,11 +44,13 @@ app.get('*', async (req, res, next) => {
       return
     }
 
+    const sheet = new ServerStyleSheet()
+    const Component = sheet.collectStyles(route.component)
     const data = Object.assign({}, route, {
       children: ReactDOM.renderToString(
         <Provider store={store}>
           <App router={router} history={history}>
-            {route.component}
+            {Component}
           </App>
         </Provider>
       ),
@@ -55,8 +58,10 @@ app.get('*', async (req, res, next) => {
     })
 
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />)
+    const styleTags = sheet.getStyleTags()
+
     res.status(route.status || 200)
-    res.send(`<!doctype html>${html}`)
+    res.send(`<!doctype html>${html.replace(/<\/body>/, `</bod>${styleTags}`)}`)
   } catch (err) {
     next(err)
   }
