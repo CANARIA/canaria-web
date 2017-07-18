@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "description": "canariaのwebアプリケーションです。",
+  "ava": {
+    "babel": "inherit",
+    "files": ["test/**/*.test.js"],
+    "require": ["babel-register"]
+  },
   "scripts": {
     "dev": "npm-run-all -p dev:*",
     "dev:server": "gulp dev-server",
@@ -15,16 +20,15 @@
     "release:css": "postcss ./src/css/app.css -o ./public/bundle.css -c ./tasks/postcss --no-map",
     "build": "npm-run-all build:*",
     "release": "npm-run-all release:*",
-    "lint": "eslint ./src/js",
+    "lint": "eslint ./src/js ./test",
+    "test": "ava",
+    "check": "npm-run-all -p test lint",
     "format": "prettier-eslint --write \"src/**/*.js\"",
     "start": "babel-node ./src/js/server.js",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
-      "npm run format",
-      "git add"
-    ]
+    "*.js": ["npm run format", "git add"]
   },
   "repository": {
     "type": "git",
@@ -68,6 +72,7 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "ava": "^0.21.0",
     "babel-eslint": "^7.2.3",
     "browser-sync": "^2.18.12",
     "eslint": "^4.1.1",
