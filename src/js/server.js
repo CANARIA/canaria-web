@@ -74,7 +74,8 @@ const pe = new PrettyError()
 pe.skipNodeFiles()
 pe.skipPackage('express')
 
-app.use((err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
   console.error(`access: ${req.url}`)
   console.error(pe.render(err))
   // const html = ReactDOM.renderToStaticMarkup(
@@ -95,15 +96,7 @@ app.use((err, req, res) => {
 // Launch the server
 // -----------------------------------------------------------------------------
 app.listen(config.port, () => {
-  console.info(`The server is running at http://localhost:${config.port}/`)
+  console.info(`Express server is running at http://localhost:${config.port}/`)
 })
 
 export default app
-
-// //
-// // Hot Module Replacement
-// // -----------------------------------------------------------------------------
-// if (module.hot) {
-//   app.hot = module.hot
-//   module.hot.accept('./router')
-// }
