@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import {
   push as pushAction,
   replace as replaceAction
-} from '../../actions/history'
+} from '../../../actions/history'
 
 class Link extends React.PureComponent {
   static propTypes = {

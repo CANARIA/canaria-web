@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Link from '../../components/parts/Link'
+import Link from '../../components/parts/Link/Link'
 
 const Wrapper = styled.div`background-color: red;`
 
