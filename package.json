@@ -13,6 +13,7 @@
     ]
   },
   "scripts": {
+    "prestart": "npm run release",
     "dev": "npm-run-all -p dev:*",
     "dev:server": "gulp dev-server",
     "dev:watch": "npm-run-all -p watch:*",
