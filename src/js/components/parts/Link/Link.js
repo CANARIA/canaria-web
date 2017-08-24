@@ -11,13 +11,16 @@ class Link extends React.PureComponent {
     replace: PropTypes.bool,
     to: PropTypes.string.isRequired,
     dispatch: PropTypes.func.isRequired,
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
-      .isRequired
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.element)
+    ]).isRequired,
+    className: PropTypes.string
   }
 
   constructor(props) {
     super(props)
-
     this._handleClick = this._handleClick.bind(this)
   }
 
@@ -45,9 +48,11 @@ class Link extends React.PureComponent {
   }
 
   render() {
+    const { children, className } = this.props
+
     return (
-      <a href="" onClick={this._handleClick}>
-        {this.props.children}
+      <a href="" onClick={this._handleClick} className={className || ''}>
+        {children}
       </a>
     )
   }

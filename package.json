@@ -5,8 +5,12 @@
   "description": "canariaのwebアプリケーションです。",
   "ava": {
     "babel": "inherit",
-    "files": ["test/**/*.test.js"],
-    "require": ["babel-register"]
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "require": [
+      "babel-register"
+    ]
   },
   "scripts": {
     "dev": "npm-run-all -p dev:*",
@@ -28,7 +32,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": ["npm run format", "git add"]
+    "*.js": [
+      "npm run format",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",

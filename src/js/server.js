@@ -61,7 +61,9 @@ app.get('*', async (req, res, next) => {
     const styleTags = sheet.getStyleTags()
 
     res.status(route.status || 200)
-    res.send(`<!doctype html>${html.replace(/<\/body>/, `</bod>${styleTags}`)}`)
+    res.send(
+      `<!doctype html>${html.replace(/<\/head>/, `${styleTags}</head>`)}`
+    )
   } catch (err) {
     next(err)
   }

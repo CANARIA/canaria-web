@@ -1,29 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import assign from '../../../helpers/assign'
-
-const Wrapper = styled.ul`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`
-const Item = styled.li`
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: no-repeat center center;
-  background-size: cover;
-  transition: all 2s;
-  &.is-active {
-    opacity: 1;
-    visibility: visible;
-  }
-`
+import { Wrapper, Item, User, Thumb, Info, Title } from './Poster.style'
 
 export default class Poster extends React.Component {
   static propTypes = {
@@ -70,10 +48,24 @@ export default class Poster extends React.Component {
       <Wrapper>
         {this.state.list.map(item =>
           <Item
-            key={item.path}
+            key={item.id}
             className={item.visible ? 'is-active' : ''}
             style={{ backgroundImage: `url(${item.path})` }}
-          />
+          >
+            <User to={`/${item.user.name}`}>
+              <Thumb>
+                <img src={item.user.thumb} width="40px" height="40px" />
+              </Thumb>
+              <Info>
+                <Title>
+                  {item.title}
+                </Title>
+                <p>
+                  drawn by @{item.user.name}
+                </p>
+              </Info>
+            </User>
+          </Item>
         )}
       </Wrapper>
     )
